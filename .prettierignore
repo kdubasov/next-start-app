@@ -1,0 +1,21 @@
+# Ignore artifacts:
+build
+dist
+coverage
+
+# PNPM package manager
+pnpm-lock.yaml
+package-lock.json
+
+# Python
+.venv
+.pytest_cache
+
+# Deployment
+helm/
+
+# Auto-generated
+CHANGELOG.md
+tsconfig.json
+src/gql/*
+docs/

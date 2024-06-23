@@ -1,0 +1,22 @@
+singleQuote: true
+importOrder:
+  [
+    '^react$',
+    '^next/(.*)$',
+    '<THIRD_PARTY_MODULES>',
+    '^@/hooks/(.*)$',
+    '^@/utils/(.*)$',
+    '^@/graphql/(.*)$',
+    '^@/redux/(.*)$',
+    '^@/shared/(.*)$',
+    '^@/constants/(.*)$',
+    '^@/components/(.*)$',
+    '^@/(.*)$',
+    '^app/(.*)$',
+    '^@/assets/(.*)$',
+    '^[./]',
+  ]
+importOrderSeparation: true
+importOrderSortSpecifiers: true
+importOrderCaseInsensitive: true
+plugins: ['@trivago/prettier-plugin-sort-imports']
