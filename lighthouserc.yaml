@@ -1,0 +1,23 @@
+ci:
+  collect:
+    numberOfRuns: 3
+    startServerCommand: pnpm run start
+    url: ['http://localhost:3000/']
+    isSinglePageApplication: true
+    settings:
+      maxWaitForLoad: 99000
+      preset: 'desktop'
+  assert:
+    assertMatrix:
+      - matchingUrlPattern: '.*'
+        assertions:
+          'categories:pwa': ['off']
+      - matchingUrlPattern: 'http://[^/]+/'
+        assertions:
+          'categories:performance': ['error', { 'minScore': .99 }]
+          'categories:accessibility': ['error', { 'minScore': .99 }]
+          'categories:best-practices': ['error', { 'minScore': .99 }]
+          'categories:seo': ['error', { 'minScore': .99 }]
+  upload:
+    target: 'filesystem'
+    outputDir: 'reports'
