@@ -1,4 +1,5 @@
 import pluginJs from '@eslint/js';
+import nextPlugin from '@next/eslint-plugin-next';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
 import nodePlugin from 'eslint-plugin-n';
@@ -46,8 +47,13 @@ export default [
     ],
   },
   {
+    plugins: { '@next/next': nextPlugin },
+    rules: nextPlugin.configs.recommended.rules,
+  },
+  {
     rules: {
       'react/react-in-jsx-scope': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
       'prettier/prettier': [
         'error',
         {
