@@ -4,7 +4,9 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
 import nodePlugin from 'eslint-plugin-n';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import promiselint from 'eslint-plugin-promise';
 import pluginReact from 'eslint-plugin-react';
+import hookslint from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
@@ -19,10 +21,24 @@ export default [
   eslintPluginPrettierRecommended,
   {
     plugins: { import: importPlugin },
+    rules: {
+      'import/no-cycle': 'error',
+    },
+  },
+  {
+    plugins: { promise: promiselint },
+    rules: promiselint.configs.recommended.rules,
+  },
+  {
+    plugins: { 'react-hooks': hookslint },
+    rules: hookslint.configs.recommended.rules,
   },
   {
     plugins: { n: nodePlugin },
     rules: {
+      ...nodePlugin.configs.recommended.rules,
+      'n/no-unsupported-features/node-builtins': 'off',
+      'n/no-missing-import': 'off',
       'n/exports-style': ['error', 'module.exports'],
     },
   },
@@ -34,8 +50,11 @@ export default [
       'react-refresh/only-export-components': 'off',
     },
   },
+  {
+    plugins: { '@next/next': nextPlugin },
+    rules: nextPlugin.configs.recommended.rules,
+  },
   eslintConfigPrettier,
-  ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   {
     ignores: [
@@ -47,13 +66,9 @@ export default [
     ],
   },
   {
-    plugins: { '@next/next': nextPlugin },
-    rules: nextPlugin.configs.recommended.rules,
-  },
-  {
     rules: {
       'react/react-in-jsx-scope': 'off',
-      '@typescript-eslint/no-unused-expressions': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off', // TODO: error if on
       'prettier/prettier': [
         'error',
         {
