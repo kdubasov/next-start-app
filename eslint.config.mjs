@@ -69,6 +69,21 @@ export default [
     rules: {
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-unused-expressions': 'off', // TODO: error if on
+      '@typescript-eslint/naming-convention': [
+        'error',
+        {
+          // Правило для интерфейсов (префикс I)
+          selector: 'interface',
+          format: ['PascalCase'],
+          prefix: ['I'],
+        },
+        {
+          // Правило для типов (префикс T)
+          selector: 'typeAlias',
+          format: ['PascalCase'],
+          prefix: ['T'],
+        },
+      ],
       'prettier/prettier': [
         'error',
         {

@@ -7,11 +7,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import store from 'store/store';
 
-type Props = {
+type TProps = {
   children: React.ReactNode;
 };
 
-const Providers = ({ children }: Props) => {
+const Providers = ({ children }: TProps) => {
   return (
     <Provider store={store}>
       <ToastContainer
