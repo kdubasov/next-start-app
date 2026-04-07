@@ -4,8 +4,8 @@ import { useTransition } from 'react';
 
 import { useLocale, useTranslations } from 'next-intl';
 
-import { usePathname, useRouter } from '../i18n/navigation';
-import { routing } from '../i18n/routing';
+import { usePathname, useRouter } from '@/i18n/navigation';
+import { routing } from '@/i18n/routing';
 
 export default function LanguageSwitcher() {
   const t = useTranslations('LanguageSwitcher');

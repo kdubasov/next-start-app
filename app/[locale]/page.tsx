@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
-import LanguageSwitcher from '../../components/LanguageSwitcher';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+
 import styles from '../page.module.css';
 
 export default async function Home() {
