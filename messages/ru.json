@@ -1,0 +1,11 @@
+{
+  "Home": {
+    "title": "Привет, мир!",
+    "description": "Это пример страницы с локализацией через next-intl."
+  },
+  "LanguageSwitcher": {
+    "label": "Язык",
+    "ru": "Русский",
+    "en": "English"
+  }
+}
