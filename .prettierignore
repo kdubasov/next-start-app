@@ -17,5 +17,6 @@ helm/
 # Auto-generated
 CHANGELOG.md
 tsconfig.json
+next-env.d.ts
 src/gql/*
 docs/
