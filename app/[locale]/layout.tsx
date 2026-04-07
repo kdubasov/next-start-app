@@ -1,12 +1,11 @@
-import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
 import { Inter } from 'next/font/google';
 import { notFound } from 'next/navigation';
 
 import type { Metadata } from 'next';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 
 import { routing } from '../../i18n/routing';
-
 import '../globals.css';
 import Providers from '../providers';
 
