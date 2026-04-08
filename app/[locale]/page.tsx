@@ -1,17 +1,10 @@
-import { getTranslations } from 'next-intl/server';
+import { redirect } from '@/i18n/navigation';
 
-import LanguageSwitcher from '@/components/LanguageSwitcher';
-
-import styles from '../page.module.css';
-
-export default async function Home() {
-  const t = await getTranslations('Home');
-
-  return (
-    <main className={styles.main} data-testid="home-page">
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
-      <LanguageSwitcher />
-    </main>
-  );
+export default async function Root({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  redirect({ href: '/guides', locale });
 }
