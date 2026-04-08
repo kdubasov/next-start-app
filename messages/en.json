@@ -3,9 +3,44 @@
     "title": "Hello, world!",
     "description": "This is an example page localized via next-intl."
   },
-  "LanguageSwitcher": {
-    "label": "Language",
-    "ru": "Русский",
-    "en": "English"
+  "Header": {
+    "darkMode": "Dark theme",
+    "lightMode": "Light theme"
+  },
+  "Footer": {
+    "Продукт": "Product",
+    "Обзор": "Overview",
+    "Telegram Mini App": "Telegram Mini App",
+    "Course Studio": "Course Studio",
+    "Документы": "Documents",
+    "Вайтпейпер": "Whitepaper",
+    "Токеномика": "Tokenomics",
+    "Privacy Policy": "Privacy Policy",
+    "Terms of Use": "Terms of Use",
+    "Cookie Policy": "Cookie Policy",
+    "Контакты": "Contacts",
+    "Поддержка": "Support",
+    "Обратная связь": "Feedback",
+    "Партнёрство": "Partnership",
+    "Мы в соцсетях": "We are on socials",
+    "Скоро": "Soon"
+  },
+  "BottomNav": {
+    "Главная": "Home",
+    "Каталог": "Catalog",
+    "Мои курсы": "My courses",
+    "Задания": "Tasks",
+    "Реферал": "Referral"
+  },
+  "NavBar": {
+    "Главная": "Home",
+    "Каталог": "Catalog",
+    "Мои курсы": "My courses",
+    "Задания": "Tasks",
+    "Мой токен": "My token",
+    "Реферальная программа": "Referral program",
+    "Инструкции": "Guides",
+    "Course Studio": "Course Studio",
+    "Скоро": "Soon"
   }
 }
