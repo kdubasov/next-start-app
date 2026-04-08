@@ -1,4 +1,7 @@
+import type { ReactNode } from 'react';
+
 import { Inter } from 'next/font/google';
+import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 
 import type { Metadata } from 'next';
@@ -6,9 +9,14 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
 import { routing } from '@/i18n/routing';
+import { BottomNav } from '@/src/widgets/bottom-nav';
+import { Footer } from '@/src/widgets/footer';
+import { Header } from '@/src/widgets/header';
+import { NavBar } from '@/src/widgets/nav-bar';
 
 import '../globals.css';
 import Providers from '../providers';
+import layoutStyles from './layout.module.css';
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] });
 
@@ -25,7 +33,7 @@ export default async function LocaleLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
@@ -34,11 +42,23 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
+  const theme = (await cookies()).get('theme')?.value === 'dark' ? 'dark' : '';
+
   return (
-    <html lang={locale}>
+    <html lang={locale} className={theme}>
       <body className={inter.className}>
         <NextIntlClientProvider>
-          <Providers>{children}</Providers>
+          <Providers>
+            <div className={layoutStyles.appShell}>
+              <NavBar />
+              <div className={layoutStyles.contentColumn}>
+                <Header />
+                <main className={layoutStyles.main}>{children}</main>
+                <Footer />
+              </div>
+              <BottomNav />
+            </div>
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>
