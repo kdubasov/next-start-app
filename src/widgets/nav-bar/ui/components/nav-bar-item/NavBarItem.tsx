@@ -2,8 +2,9 @@
 
 import type { ComponentType, ReactNode } from 'react';
 
+import { cn } from '@/shared/lib/cn';
+
 import { Link, usePathname } from '@/i18n/navigation';
-import { cn } from '@/src/shared/lib/cn';
 
 import styles from './NavBarItem.module.css';
 

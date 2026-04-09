@@ -1,8 +1,8 @@
 // app/[locale]/instructions/page.tsx
+import { notFound } from 'next/navigation';
 
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { notFound } from 'next/navigation';
 
 import { redirect } from '@/i18n/navigation';
 import {

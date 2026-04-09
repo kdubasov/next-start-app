@@ -16,9 +16,9 @@ import {
 
 import { Link } from '@/i18n/navigation';
 
-import { Divider } from './Divider';
+import { Divider } from './components/divider/Divider';
+import { NavBarItem } from './components/nav-bar-item/NavBarItem';
 import styles from './NavBar.module.css';
-import { NavBarItem } from './NavBarItem';
 
 export function NavBar() {
   const t = useTranslations('NavBar');

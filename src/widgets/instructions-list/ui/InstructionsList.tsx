@@ -1,5 +1,4 @@
 // InstructionsList.tsx
-
 import { getTranslations } from 'next-intl/server';
 
 import type {
@@ -40,8 +39,7 @@ export const InstructionsList = async ({
 }: TProps) => {
   const t = await getTranslations('Instructions');
   const title = currentCategory?.seo.title ?? t('seoTitle');
-  const description =
-    currentCategory?.seo.description ?? t('seoDescription');
+  const description = currentCategory?.seo.description ?? t('seoDescription');
 
   const jsonLd = buildListJsonLd({
     response,

@@ -1,5 +1,4 @@
 // src/widgets/instructions-list/model/json-ld.ts
-
 import type {
   TCategoryWithSeo,
   TInstructionListResponse,

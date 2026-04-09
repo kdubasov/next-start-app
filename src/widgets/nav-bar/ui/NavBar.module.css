@@ -36,8 +36,8 @@
 
 .logoIcon {
   display: block;
-  width: auto;
-  height: 2.5rem;
+  width: 130px;
+  height: auto;
   color: var(--text-primary);
   transition: color 200ms;
 }

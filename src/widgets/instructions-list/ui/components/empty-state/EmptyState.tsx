@@ -1,5 +1,4 @@
 // EmptyState.tsx
-
 import { getTranslations } from 'next-intl/server';
 
 import styles from './EmptyState.module.css';

@@ -19,11 +19,7 @@ type TProps = {
   currentCategory: string | undefined;
 };
 
-export const FiltersBar = ({
-  params,
-  categories,
-  currentCategory,
-}: TProps) => {
+export const FiltersBar = ({ params, categories, currentCategory }: TProps) => {
   const t = useTranslations('Instructions');
   const router = useRouter();
   const pathname = usePathname();

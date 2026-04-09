@@ -1,5 +1,4 @@
 // src/widgets/instructions-list/model/url-state.ts
-
 import type {
   TInstructionListParams,
   TLocale,
@@ -87,7 +86,11 @@ export const buildPageRange = (
 
   add(1);
   if (current - 2 > 2) push('…');
-  for (let n = Math.max(2, current - 1); n <= Math.min(total - 1, current + 1); n++) {
+  for (
+    let n = Math.max(2, current - 1);
+    n <= Math.min(total - 1, current + 1);
+    n++
+  ) {
     add(n);
   }
   if (current + 2 < total - 1) push('…');

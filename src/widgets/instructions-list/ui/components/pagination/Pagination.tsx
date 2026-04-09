@@ -1,5 +1,4 @@
 // Pagination.tsx
-
 import { getTranslations } from 'next-intl/server';
 
 import { Link } from '@/i18n/navigation';
@@ -46,11 +45,7 @@ export const Pagination = async ({ basePath, params, totalPages }: TProps) => {
 
       {range.map((entry, idx) =>
         entry === '…' ? (
-          <span
-            key={`e-${idx}`}
-            className={styles.ellipsis}
-            aria-hidden="true"
-          >
+          <span key={`e-${idx}`} className={styles.ellipsis} aria-hidden="true">
             …
           </span>
         ) : entry === current ? (
@@ -62,11 +57,7 @@ export const Pagination = async ({ basePath, params, totalPages }: TProps) => {
             {entry}
           </span>
         ) : (
-          <Link
-            key={entry}
-            href={hrefFor(entry)}
-            className={styles.item}
-          >
+          <Link key={entry} href={hrefFor(entry)} className={styles.item}>
             {entry}
           </Link>
         ),

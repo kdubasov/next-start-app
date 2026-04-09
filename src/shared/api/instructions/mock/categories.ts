@@ -1,5 +1,4 @@
 // src/shared/api/instructions/mock/categories.ts
-
 import type { TCategoryWithSeo, TLocale } from '../types';
 
 export const CATEGORY_SLUGS = ['ai', 'crypto'] as const;

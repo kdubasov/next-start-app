@@ -1,6 +1,105 @@
-:root {
-  --font-mono:
-    ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+@import '../src/styles/colors.css';
+@import '../src/styles/typography.css';
+@import '../src/styles/animations.css';
+
+@font-face {
+  font-family: 'TT Commons';
+  src: url('/fonts/TTCommons-DemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TT Commons';
+  src: url('/fonts/TTCommons-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TT Commons';
+  src: url('/fonts/TTCommons-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border-color: var(--color-gray-2, currentcolor);
+}
+
+html {
+  font-family: var(--font-tt-commons);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  scrollbar-gutter: stable;
+  overflow-x: hidden;
+  max-width: 100vw;
+  --navbar-width: 249px;
+}
+
+body {
+  font-family: inherit;
+  line-height: inherit;
+  overflow-x: hidden;
+  max-width: 100vw;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+ol,
+ul {
+  list-style: none;
+}
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+html.dark {
+  color-scheme: dark light;
+  background-color: var(--bg-primary);
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font: inherit;
+  color: inherit;
+}
+
+.scrollbar-hide {
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

@@ -58,4 +58,7 @@ export type TCategoryWithSeo = {
 };
 
 export const DEFAULT_PAGE_SIZE = 12;
-export const SUPPORTED_SORTS: readonly TSortOption[] = ['newest', 'popular'] as const;
+export const SUPPORTED_SORTS: readonly TSortOption[] = [
+  'newest',
+  'popular',
+] as const;

@@ -1,10 +1,5 @@
 // src/shared/api/instructions/mock/generate.ts
-
-import type {
-  TInstructionListItem,
-  TCategorySlug,
-  TLocale,
-} from '../types';
+import type { TCategorySlug, TInstructionListItem, TLocale } from '../types';
 
 const mulberry32 = (seed: number) => {
   let a = seed >>> 0;
@@ -18,7 +13,7 @@ const mulberry32 = (seed: number) => {
   };
 };
 
-const pick = <T,>(rng: () => number, arr: readonly T[]): T =>
+const pick = <T>(rng: () => number, arr: readonly T[]): T =>
   arr[Math.floor(rng() * arr.length)] as T;
 
 const slugify = (s: string): string =>
@@ -173,10 +168,8 @@ export const generateDataset = (
   const items: TInstructionListItem[] = [];
   for (let i = 0; i < count; i++) {
     const category = categories[i % categories.length] as TCategorySlug;
-    const titles =
-      category === 'ai' ? pool.aiTitles : pool.cryptoTitles;
-    const excerpts =
-      category === 'ai' ? pool.aiExcerpts : pool.cryptoExcerpts;
+    const titles = category === 'ai' ? pool.aiTitles : pool.cryptoTitles;
+    const excerpts = category === 'ai' ? pool.aiExcerpts : pool.cryptoExcerpts;
     const title = `${titles[i % titles.length]} #${i + 1}`;
     const excerpt = pick(rng, excerpts);
     const author = pick(rng, pool.authors);
@@ -212,7 +205,11 @@ export const generateDataset = (
       seo: {
         title: `${title} — Open Academy`,
         description: excerpt,
-        keywords: [category, 'open academy', locale === 'ru' ? 'инструкция' : 'guide'],
+        keywords: [
+          category,
+          'open academy',
+          locale === 'ru' ? 'инструкция' : 'guide',
+        ],
         ogImageUrl: '/instructions/placeholder.svg',
         canonical: `/${locale}/instructions/${slug}`,
       },

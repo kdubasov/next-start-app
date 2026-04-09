@@ -1,8 +1,11 @@
 // src/shared/api/instructions/client.ts
-import 'server-only';
-
 import { cache } from 'react';
 
+import 'server-only';
+
+import { CATEGORIES_BY_LOCALE } from './mock/categories';
+import { DATASET_EN } from './mock/dataset.en';
+import { DATASET_RU } from './mock/dataset.ru';
 import type {
   TCategoryWithSeo,
   TInstructionListItem,
@@ -11,9 +14,6 @@ import type {
   TLocale,
 } from './types';
 import { DEFAULT_PAGE_SIZE } from './types';
-import { CATEGORIES_BY_LOCALE } from './mock/categories';
-import { DATASET_RU } from './mock/dataset.ru';
-import { DATASET_EN } from './mock/dataset.en';
 
 const DATASETS: Record<TLocale, TInstructionListItem[]> = {
   ru: DATASET_RU,
@@ -52,9 +52,7 @@ const applySort = (
 };
 
 export const getInstructions = cache(
-  async (
-    params: TInstructionListParams,
-  ): Promise<TInstructionListResponse> => {
+  async (params: TInstructionListParams): Promise<TInstructionListResponse> => {
     const pageSize = params.pageSize ?? DEFAULT_PAGE_SIZE;
     const page = Math.max(1, params.page ?? 1);
 
