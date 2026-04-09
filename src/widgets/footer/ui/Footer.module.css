@@ -1,0 +1,185 @@
+/* ---------- footer ---------- */
+/* "mx-auto flex w-full items-start gap-8 border-t ... pt-15 pb-12 pl-9" */
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+
+  width: 100%;
+  padding: 3rem 2.25rem;
+
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 1240px) {
+  .footer {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+/* Скрываем подвал когда показывается нижнее меню */
+@media (max-width: 768px) {
+  .footer {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  .footer {
+    padding: 1.5rem 0.75rem;
+    gap: 2rem;
+  }
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 4rem;
+}
+
+@media (max-width: 1240px) {
+  .items {
+    gap: 3rem;
+  }
+}
+@media (max-width: 768px) {
+  .items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 420px) {
+  .items {
+    gap: 2rem;
+  }
+}
+@media (max-width: 375px) {
+  .items {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- logo ---------- */
+
+.logo {
+  color: var(--text-primary);
+  transition: color 200ms;
+}
+
+/* ---------- columns ---------- */
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* gap-6 */
+}
+
+.columnSocial {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* gap-4 */
+}
+
+@media (max-width: 768px) {
+  .column {
+    gap: 1rem;
+  }
+}
+
+/* ---------- titles ---------- */
+/* text-base/none font-medium tracking-[0.02em] text-gray-3 uppercase */
+
+.title {
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 500;
+
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: var(--color-gray-3);
+}
+
+@media (max-width: 560px) {
+  .title {
+    font-size: 0.875rem;
+  }
+}
+
+/* ---------- links ---------- */
+/* text-lg/none text-gray-5 dark:text-gray-1 */
+
+.link {
+  font-size: 1.125rem;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  color: var(--text-primary);
+
+  transition: opacity 200ms;
+}
+.link.disabled {
+  pointer-events: none;
+  color: #b0b0b0;
+}
+
+@media (max-width: 560px) {
+  .link {
+    font-size: 1rem;
+  }
+}
+
+.link > .badge {
+  padding: 0.1rem 0.25rem;
+
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #924cfe;
+  background: #f0eaff;
+  border-radius: 3px;
+}
+
+.link:hover {
+  opacity: 0.7;
+}
+
+/* ---------- socials ---------- */
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem; /* gap-2.5 */
+}
+
+@media (max-width: 560px) {
+  .socials {
+    gap: 0.375rem;
+  }
+}
+
+/* "flex size-9 items-center justify-center rounded-lg border ..." */
+.socialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.25rem; /* size-9 */
+  height: 2.25rem;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-default);
+
+  color: var(--text-secondary);
+
+  transition:
+    background-color 200ms,
+    color 200ms,
+    border-color 200ms;
+}
+
+.socialBtn:hover {
+  background: var(--bg-hover);
+}

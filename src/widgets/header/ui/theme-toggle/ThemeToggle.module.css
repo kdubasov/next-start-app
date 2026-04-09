@@ -1,0 +1,59 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.625rem;
+  height: 2.625rem;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-default);
+
+  transition:
+    background-color 200ms,
+    border-color 200ms;
+}
+
+@media (max-width: 991px) {
+  .button {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+@media (max-width: 420px) {
+  .button {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.button:hover {
+  background: var(--bg-hover);
+}
+
+.iconLight,
+.iconDark {
+  width: 1.125rem;
+  height: 1.125rem;
+
+  animation: spinIn 180ms ease-out both;
+}
+
+.iconLight {
+  color: var(--color-gray-4);
+}
+
+.iconDark {
+  color: #fff;
+}
+
+@keyframes spinIn {
+  from {
+    opacity: 0.4;
+    transform: rotate(-90deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}

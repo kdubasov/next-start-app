@@ -1,0 +1,89 @@
+:root {
+  --color-violet: #a66cff;
+  --color-violet-dark: #924cfe;
+  --color-violet-ultra-dark: #460466;
+  --color-violet-light: #bf96ff;
+  --color-violet-lightest: #d9c0ff;
+  --color-orange: #f65c39;
+  --color-orange-dark: #e93f18;
+  --color-orange-light: #ff7d60;
+  --color-orange-lightest: #ffb09e;
+  --color-orange-rgb: 246, 92, 57;
+  --color-lime: #cff500;
+  --color-red: #ff4654;
+  --color-blue: #7dc7eb;
+  --color-green: #20cd69;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-error: #ff4654;
+
+  --color-gray-1: #f7f7f8;
+  --color-gray-2: #ebe9ea;
+  --color-gray-3: #8d8d8d;
+  --color-gray-4: #464646;
+  --color-gray-5: #232323;
+  --color-gray-2-rgb: 235, 233, 234;
+  --color-gray-3-rgb: 141, 141, 141;
+  --color-gray-4-rgb: 70, 70, 70;
+  --color-gray-5-rgb: 35, 35, 35;
+
+  --color-grey-1: #f7f7f8;
+  --color-grey-2: #ebe9ea;
+  --color-grey-5: #232323;
+
+  --color-yellow-100: #fef9c3;
+  --color-yellow-300: #fcd34d;
+  --color-yellow-main: #facc15;
+  --color-yellow-super-light: #fefce8;
+
+  --color-res-bot-blue: #3b82f6;
+}
+
+/* ===== Semantic tokens (light) ===== */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f7f8;
+  --bg-tertiary: #ebe9ea;
+  --bg-elevated: #ffffff;
+  --bg-hover: #f7f7f8;
+  --bg-active: #ebe9ea;
+
+  --text-primary: #000000;
+  --text-secondary: #8d8d8d;
+  --text-tertiary: rgba(0, 0, 0, 0.25);
+  --text-inverse: #ffffff;
+
+  --border-default: #ebe9ea;
+  --border-subtle: #f7f7f8;
+  --border-strong: #464646;
+
+  --fill-primary: #f7f7f8;
+  --fill-secondary: #ebe9ea;
+
+  --btn-filled-bg: #000000;
+  --btn-filled-text: #ffffff;
+}
+
+.dark {
+  --bg-primary: #000000;
+  --bg-secondary: #1c1c1e;
+  --bg-tertiary: #2c2c2e;
+  --bg-elevated: #1c1c1e;
+  --bg-hover: #2c2c2e;
+  --bg-active: #3a3a3c;
+
+  --text-primary: #ffffff;
+  --text-secondary: rgba(235, 235, 245, 0.6);
+  --text-tertiary: rgba(235, 235, 245, 0.3);
+  --text-inverse: #000000;
+
+  --border-default: #38383a;
+  --border-subtle: rgba(84, 84, 88, 0.6);
+  --border-strong: #636366;
+
+  --fill-primary: rgba(120, 120, 128, 0.36);
+  --fill-secondary: rgba(120, 120, 128, 0.24);
+
+  --btn-filled-bg: #2c2c2e;
+  --btn-filled-text: #ffffff;
+}

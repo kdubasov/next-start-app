@@ -1,0 +1,137 @@
+.flag {
+  width: 1.6875rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  border-radius: 0.125rem;
+}
+
+@media (max-width: 420px) {
+  .flag {
+    width: 1.25rem;
+  }
+}
+
+.trigger {
+  height: 2.625rem;
+  width: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-default);
+
+  padding: 0.375rem 0.875rem;
+
+  box-shadow: none;
+
+  transition:
+    background-color 200ms,
+    border-color 200ms;
+}
+
+@media (max-width: 991px) {
+  .trigger {
+    height: 2.5rem;
+    padding: 0 0.4rem;
+  }
+}
+
+.trigger:hover {
+  background: var(--bg-hover);
+}
+
+.triggerIcon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+@media (max-width: 991px) {
+  .triggerIcon {
+    display: none;
+  }
+}
+
+.triggerInner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 991px) {
+  .triggerInner {
+    gap: 0;
+  }
+}
+
+.valueText {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+
+  color: var(--text-primary);
+}
+
+@media (max-width: 991px) {
+  .valueText {
+    display: none;
+  }
+}
+
+.content {
+  border: 1px solid var(--color-gray-3);
+  border-radius: 10px;
+  background: var(--color-gray-5);
+}
+
+.contentInner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  padding: 0.5rem 0.375rem;
+}
+
+.option {
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.625rem;
+
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+
+  color: var(--color-gray-3);
+
+  transition:
+    background-color 200ms,
+    color 200ms;
+}
+
+.option:focus {
+  background: transparent;
+}
+
+.option[data-highlighted] {
+  background: var(--color-violet);
+  color: #fff;
+}
+
+.option[data-state='checked'] {
+  color: #fff;
+}
+
+.optionSelected {
+  color: #fff;
+}
+
+.optionInner {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.check {
+  margin-left: 2rem;
+}

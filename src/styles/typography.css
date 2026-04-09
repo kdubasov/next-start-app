@@ -1,0 +1,45 @@
+:root {
+  --font-tt-commons: TT Commons, sans-serif;
+
+  --text-xxs: 0.625rem;
+  --text-xxs--line-height: 0.625rem;
+  --text-over-xs: 0.625vw;
+  --text-over-xs--line-height: 0.8333vw;
+  --text-over-sm: 0.7292vw;
+  --text-over-sm--line-height: 1.0417vw;
+  --text-over-base: 0.8333vw;
+  --text-over-base--line-height: 1.25vw;
+  --text-over-lg: 0.9375vw;
+  --text-over-lg--line-height: 1.4583vw;
+  --text-over-xl: 1.0417vw;
+  --text-over-xl--line-height: 1.4583vw;
+  --text-over-2xl: 1.25vw;
+  --text-over-2xl--line-height: 1.6667vw;
+  --text-over-3xl: 1.5625vw;
+  --text-over-3xl--line-height: 1.875vw;
+  --text-over-4xl: 1.875vw;
+  --text-over-4xl--line-height: 2.0833vw;
+
+  --radius-over-sm: 0.1042vw;
+  --radius-over-md: 0.3125vw;
+  --radius-over-lg: 0.4167vw;
+  --radius-over-xl: 0.625vw;
+  --radius-over-2xl: 0.8333vw;
+
+  --gap-over-1: 0.2083vw;
+  --gap-over-1_5: 0.3125vw;
+  --gap-over-3: 0.625vw;
+  --gap-over-4: 0.8333vw;
+  --gap-over-5: 1.0417vw;
+  --gap-over-6: 1.25vw;
+  --gap-over-8: 1.6667vw;
+  --gap-over-12: 2.5vw;
+  --gap-over-16: 3.3333vw;
+
+  --aspect-3\/4: 3 / 4;
+
+  --breakpoint-phone-sm: 380px;
+  --breakpoint-phone-md: 420px;
+  --breakpoint-phone: 480px;
+  --breakpoint-3xl: 1921px;
+}
