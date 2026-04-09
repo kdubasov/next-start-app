@@ -19,6 +19,37 @@ module.exports = {
       priority: 0.7,
     };
   },
+  additionalPaths: async (config) => {
+    const locales = ['ru', 'en'];
+    const categories = ['ai', 'crypto'];
+    const maxPages = 5;
+    const paths = [];
+    for (const locale of locales) {
+      paths.push({ loc: `/${locale}/instructions`, changefreq: 'daily', priority: 0.8 });
+      for (let p = 2; p <= maxPages; p++) {
+        paths.push({
+          loc: `/${locale}/instructions?page=${p}`,
+          changefreq: 'daily',
+          priority: 0.5,
+        });
+      }
+      for (const cat of categories) {
+        paths.push({
+          loc: `/${locale}/instructions/${cat}`,
+          changefreq: 'daily',
+          priority: 0.8,
+        });
+        for (let p = 2; p <= maxPages; p++) {
+          paths.push({
+            loc: `/${locale}/instructions/${cat}?page=${p}`,
+            changefreq: 'daily',
+            priority: 0.5,
+          });
+        }
+      }
+    }
+    return paths;
+  },
   robotsTxtOptions: {
     policies: [
       {
