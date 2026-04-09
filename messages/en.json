@@ -42,5 +42,29 @@
     "Инструкции": "Guides",
     "Course Studio": "Course Studio",
     "Скоро": "Soon"
+  },
+  "Instructions": {
+    "pageTitle": "Guides",
+    "pageSubtitle": "Open Academy knowledge base — walkthroughs and guides on AI and crypto",
+    "seoTitle": "Guides — Open Academy",
+    "seoDescription": "Step-by-step guides and walkthroughs for AI and crypto. Updated regularly.",
+    "seoKeywords": "guides, walkthroughs, ai, crypto, web3, open academy",
+    "searchPlaceholder": "Search guides",
+    "sortLabel": "Sort",
+    "sortNewest": "Newest first",
+    "sortPopular": "Most popular",
+    "categoryAll": "All categories",
+    "categoryAllShort": "All",
+    "filterCategoryLabel": "Category",
+    "empty": "Nothing found",
+    "emptyHint": "Try clearing filters or changing the search query",
+    "minutesRead": "{count} min read",
+    "views": "{count} views",
+    "pageSuffix": "Page {page}",
+    "paginationLabel": "Pagination",
+    "paginationPrev": "Previous",
+    "paginationNext": "Next",
+    "breadcrumbHome": "Home",
+    "breadcrumbInstructions": "Guides"
   }
 }
