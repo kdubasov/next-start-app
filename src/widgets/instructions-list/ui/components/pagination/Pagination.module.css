@@ -1,0 +1,43 @@
+/* Pagination.module.css */
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.item {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid rgba(127, 127, 127, 0.25);
+  background: transparent;
+}
+
+.item:hover {
+  background: rgba(127, 127, 127, 0.15);
+}
+
+.active {
+  font-weight: 600;
+  background: rgba(127, 127, 127, 0.2);
+}
+
+.ellipsis {
+  padding: 0 4px;
+  opacity: 0.6;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
