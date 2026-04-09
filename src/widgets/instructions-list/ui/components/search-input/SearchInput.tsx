@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { usePathname, useRouter } from '@/i18n/navigation';
-import type { TInstructionListParams } from '@/src/shared/api/instructions';
+import type { TInstructionListParams } from '@/src/shared/api/instructions/types';
 
 import { buildHref } from '../../../model/url-state';
 import styles from './SearchInput.module.css';

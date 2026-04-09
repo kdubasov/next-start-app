@@ -3,8 +3,8 @@ import type {
   TInstructionListParams,
   TLocale,
   TSortOption,
-} from '@/src/shared/api/instructions';
-import { SUPPORTED_SORTS } from '@/src/shared/api/instructions';
+} from '@/src/shared/api/instructions/types';
+import { SUPPORTED_SORTS } from '@/src/shared/api/instructions/types';
 
 export type TRawSearchParams = Record<string, string | string[] | undefined>;
 

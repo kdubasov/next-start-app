@@ -8,7 +8,7 @@ import type {
   TCategoryWithSeo,
   TInstructionListParams,
   TSortOption,
-} from '@/src/shared/api/instructions';
+} from '@/src/shared/api/instructions/types';
 
 import { buildHref } from '../../../model/url-state';
 import styles from './FiltersBar.module.css';
