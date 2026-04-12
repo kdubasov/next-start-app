@@ -34,6 +34,10 @@ export type TInstructionListItem = {
   seo: TInstructionSeo;
 };
 
+export type TInstructionPageData = TInstructionListItem & {
+  content: string;
+};
+
 export type TInstructionListParams = {
   locale: TLocale;
   category?: TCategorySlug;

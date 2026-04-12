@@ -1,6 +1,6 @@
 // src/shared/api/instructions/index.ts
 
-export { getInstructions, getCategories } from './client';
+export { getInstructions, getCategories, getInstructionBySlug } from './client';
 export type {
   TLocale,
   TSortOption,
@@ -9,6 +9,7 @@ export type {
   TInstructionListItem,
   TInstructionListParams,
   TInstructionListResponse,
+  TInstructionPageData,
   TCategoryWithSeo,
 } from './types';
 export { DEFAULT_PAGE_SIZE, SUPPORTED_SORTS } from './types';

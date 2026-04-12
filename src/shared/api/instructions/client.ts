@@ -3,6 +3,7 @@ import { cache } from 'react';
 
 import 'server-only';
 
+import { ARTICLE_CONTENT } from './mock/articles';
 import { CATEGORIES_BY_LOCALE } from './mock/categories';
 import { DATASET_EN } from './mock/dataset.en';
 import { DATASET_RU } from './mock/dataset.ru';
@@ -11,6 +12,7 @@ import type {
   TInstructionListItem,
   TInstructionListParams,
   TInstructionListResponse,
+  TInstructionPageData,
   TLocale,
 } from './types';
 import { DEFAULT_PAGE_SIZE } from './types';
@@ -72,5 +74,23 @@ export const getInstructions = cache(
 export const getCategories = cache(
   async (params: { locale: TLocale }): Promise<TCategoryWithSeo[]> => {
     return CATEGORIES_BY_LOCALE[params.locale];
+  },
+);
+
+export const getInstructionBySlug = cache(
+  async (
+    slug: string,
+    locale: TLocale,
+  ): Promise<TInstructionPageData | null> => {
+    const dataset = DATASETS[locale];
+    const item = dataset.find((i) => i.slug === slug && i.published);
+    if (!item) return null;
+
+    const contentKey = Object.keys(ARTICLE_CONTENT).find((key) =>
+      slug.startsWith(key),
+    );
+    if (!contentKey) return null;
+
+    return { ...item, content: ARTICLE_CONTENT[contentKey] };
   },
 );
