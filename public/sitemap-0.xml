@@ -30,4 +30,12 @@
 <url><loc>http://localhost:3000/en/instructions/crypto?page=3</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
 <url><loc>http://localhost:3000/en/instructions/crypto?page=4</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
 <url><loc>http://localhost:3000/en/instructions/crypto?page=5</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
+<url><loc>http://localhost:3000/ru/instruction/как-настроить-open-claw-на-сервере-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/ru/instruction/безопасность-в-web3-чек-лист-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/ru/instruction/как-настроить-claude-code-на-проекте-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/ru/instruction/промпт-инжиниринг-для-продуктовых-задач-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/en/instruction/как-настроить-open-claw-на-сервере-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/en/instruction/безопасность-в-web3-чек-лист-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/en/instruction/как-настроить-claude-code-на-проекте-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/en/instruction/промпт-инжиниринг-для-продуктовых-задач-1</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>

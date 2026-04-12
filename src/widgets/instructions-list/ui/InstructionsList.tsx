@@ -7,6 +7,10 @@ import type {
   TInstructionListResponse,
   TLocale,
 } from '@/src/shared/api/instructions';
+import {
+  Breadcrumbs,
+  type TBreadcrumbItem,
+} from '@/src/shared/ui/breadcrumbs';
 
 import { buildListJsonLd } from '../model/json-ld';
 import { EmptyState } from './components/empty-state/EmptyState';
@@ -25,6 +29,7 @@ type TProps = {
   canonicalPath: string;
   locale: TLocale;
   baseUrl: string;
+  breadcrumbs: TBreadcrumbItem[];
 };
 
 export const InstructionsList = async ({
@@ -36,6 +41,7 @@ export const InstructionsList = async ({
   canonicalPath,
   locale,
   baseUrl,
+  breadcrumbs,
 }: TProps) => {
   const t = await getTranslations('Instructions');
   const title = currentCategory?.seo.title ?? t('seoTitle');
@@ -60,6 +66,7 @@ export const InstructionsList = async ({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <Breadcrumbs items={breadcrumbs} />
       <header className={styles.header}>
         <h1 className={styles.title}>
           {currentCategory?.label ?? t('pageTitle')}

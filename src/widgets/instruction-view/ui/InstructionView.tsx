@@ -2,11 +2,14 @@ import type {
   TInstructionPageData,
   TLocale,
 } from '@/src/shared/api/instructions';
+import {
+  Breadcrumbs,
+  type TBreadcrumbItem,
+} from '@/src/shared/ui/breadcrumbs';
 
 import { buildArticleJsonLd } from '../model/json-ld';
 import { ActionBar } from './components/action-bar/ActionBar';
 import { ArticleContent } from './components/article-content/ArticleContent';
-import { BackButton } from './components/back-button/BackButton';
 import { HeroSection } from './components/hero-section/HeroSection';
 import { MetadataBar } from './components/metadata-bar/MetadataBar';
 import styles from './InstructionView.module.css';
@@ -17,6 +20,7 @@ type TProps = {
   baseUrl: string;
   breadcrumbHomeLabel: string;
   breadcrumbInstructionsLabel: string;
+  breadcrumbs: TBreadcrumbItem[];
 };
 
 export const InstructionView = ({
@@ -25,6 +29,7 @@ export const InstructionView = ({
   baseUrl,
   breadcrumbHomeLabel,
   breadcrumbInstructionsLabel,
+  breadcrumbs,
 }: TProps) => {
   const jsonLd = buildArticleJsonLd({
     article,
@@ -43,7 +48,7 @@ export const InstructionView = ({
 
       {/* Desktop layout */}
       <div className={styles.desktop}>
-        <BackButton />
+        <Breadcrumbs items={breadcrumbs} />
         <HeroSection article={article} />
         <MetadataBar article={article} />
         <ActionBar slug={article.slug} />
@@ -53,7 +58,7 @@ export const InstructionView = ({
       {/* Mobile layout */}
       <div className={styles.mobile}>
         <div className={styles.toolbar}>
-          <BackButton />
+          <Breadcrumbs items={breadcrumbs} />
           <div className={styles.toolbarActions}>
             <ActionBar slug={article.slug} />
           </div>

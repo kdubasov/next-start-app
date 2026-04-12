@@ -137,6 +137,7 @@ export default async function InstructionsCategoryPage({
 
   const basePath = `/instructions/${category}`;
   const canonicalPath = `/${locale}${buildCanonical(basePath, parsed)}`;
+  const t = await getTranslations({ locale, namespace: 'Instructions' });
 
   return (
     <InstructionsList
@@ -148,6 +149,11 @@ export default async function InstructionsCategoryPage({
       canonicalPath={canonicalPath}
       locale={locale}
       baseUrl={BASE_URL}
+      breadcrumbs={[
+        { label: t('breadcrumbHome'), href: '/' },
+        { label: t('breadcrumbInstructions'), href: '/instructions' },
+        { label: cat.label },
+      ]}
     />
   );
 }
