@@ -9,9 +9,6 @@ type TProps = {
 export const ArticleContent = async ({ content }: TProps) => {
   const html = await parseMarkdown(content);
   return (
-    <div
-      className={styles.prose}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+    <div className={styles.prose} dangerouslySetInnerHTML={{ __html: html }} />
   );
 };

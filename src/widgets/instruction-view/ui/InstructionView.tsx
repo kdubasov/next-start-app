@@ -2,10 +2,7 @@ import type {
   TInstructionPageData,
   TLocale,
 } from '@/src/shared/api/instructions';
-import {
-  Breadcrumbs,
-  type TBreadcrumbItem,
-} from '@/src/shared/ui/breadcrumbs';
+import { Breadcrumbs, type TBreadcrumbItem } from '@/src/shared/ui/breadcrumbs';
 
 import { buildArticleJsonLd } from '../model/json-ld';
 import { ActionBar } from './components/action-bar/ActionBar';

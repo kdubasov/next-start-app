@@ -7,10 +7,7 @@ import type {
   TInstructionListResponse,
   TLocale,
 } from '@/src/shared/api/instructions';
-import {
-  Breadcrumbs,
-  type TBreadcrumbItem,
-} from '@/src/shared/ui/breadcrumbs';
+import { Breadcrumbs, type TBreadcrumbItem } from '@/src/shared/ui/breadcrumbs';
 
 import { buildListJsonLd } from '../model/json-ld';
 import { EmptyState } from './components/empty-state/EmptyState';

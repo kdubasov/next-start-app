@@ -50,7 +50,8 @@ export const ActionBar = ({ slug }: TProps) => {
         🔗 {t('Копировать ссылку')}
       </button>
       <button type="button" className={styles.btn} onClick={handleBookmark}>
-        {bookmarked ? '🔖' : '🔖'} {bookmarked ? t('В закладках') : t('В закладки')}
+        {bookmarked ? '🔖' : '🔖'}{' '}
+        {bookmarked ? t('В закладках') : t('В закладки')}
       </button>
     </div>
   );
