@@ -1,0 +1,40 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-default);
+  font-size: 13px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorName {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.stat {
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .bar {
+    gap: 12px;
+    font-size: 12px;
+    padding: 12px 0;
+  }
+}
