@@ -65,6 +65,12 @@
     "paginationPrev": "Previous",
     "paginationNext": "Next",
     "breadcrumbHome": "Home",
-    "breadcrumbInstructions": "Guides"
+    "breadcrumbInstructions": "Guides",
+    "К инструкциям": "Back to instructions",
+    "Копировать ссылку": "Copy link",
+    "Ссылка скопирована": "Link copied",
+    "В закладки": "Bookmark",
+    "В закладках": "Bookmarked",
+    "мин": "min"
   }
 }
