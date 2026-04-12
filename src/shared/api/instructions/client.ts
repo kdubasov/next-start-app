@@ -82,12 +82,13 @@ export const getInstructionBySlug = cache(
     slug: string,
     locale: TLocale,
   ): Promise<TInstructionPageData | null> => {
+    const decoded = decodeURIComponent(slug);
     const dataset = DATASETS[locale];
-    const item = dataset.find((i) => i.slug === slug && i.published);
+    const item = dataset.find((i) => i.slug === decoded && i.published);
     if (!item) return null;
 
     const contentKey = Object.keys(ARTICLE_CONTENT).find((key) =>
-      slug.startsWith(key),
+      decoded.startsWith(key),
     );
     if (!contentKey) return null;
 
