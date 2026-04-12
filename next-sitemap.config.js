@@ -52,6 +52,23 @@ module.exports = {
         }
       }
     }
+    // Individual instruction pages (only mocked articles with content)
+    const articleSlugs = [
+      'как-настроить-open-claw-на-сервере',
+      'безопасность-в-web3-чек-лист',
+      'как-настроить-claude-code-на-проекте',
+      'промпт-инжиниринг-для-продуктовых-задач',
+    ];
+    for (const locale of locales) {
+      for (const slug of articleSlugs) {
+        // Match generated slugs — they have a trailing `-N` suffix
+        paths.push({
+          loc: `/${locale}/instruction/${slug}-1`,
+          changefreq: 'weekly',
+          priority: 0.7,
+        });
+      }
+    }
     return paths;
   },
   robotsTxtOptions: {

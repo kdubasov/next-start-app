@@ -13,7 +13,7 @@ type TProps = {
 export const InstructionCard = ({ item }: TProps) => {
   return (
     <Link
-      href={`/instructions/${item.slug}`}
+      href={`/instruction/${item.slug}`}
       className={styles.card}
       style={{
         background: item.gradient,
