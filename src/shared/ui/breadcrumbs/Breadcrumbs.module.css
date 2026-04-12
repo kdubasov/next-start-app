@@ -1,0 +1,35 @@
+.nav {
+  padding: 12px 0;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.item + .item::before {
+  content: '/';
+  margin: 0 8px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--text-primary);
+}
+
+.current {
+  color: var(--text-primary);
+}
