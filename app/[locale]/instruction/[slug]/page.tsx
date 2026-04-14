@@ -110,6 +110,7 @@ export default async function InstructionPage({ params }: TPageProps) {
       baseUrl={BASE_URL}
       breadcrumbHomeLabel={t('breadcrumbHome')}
       breadcrumbInstructionsLabel={t('breadcrumbInstructions')}
+      backLabel={t('К инструкциям')}
       breadcrumbs={[
         { label: t('breadcrumbHome'), href: '/' },
         { label: t('breadcrumbInstructions'), href: '/instructions' },

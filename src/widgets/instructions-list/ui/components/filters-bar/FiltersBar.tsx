@@ -3,7 +3,7 @@
 
 import { useTranslations } from 'next-intl';
 
-import { usePathname, useRouter } from '@/i18n/navigation';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import type {
   TCategory,
   TInstructionListParams,
@@ -38,50 +38,35 @@ export const FiltersBar = ({ params, categories, currentCategory }: TProps) => {
     );
   };
 
-  const onCategoryChange = (value: string) => {
-    if (!value) {
-      router.push(
-        buildHref('/instructions', {
-          sort: params.sort,
-          q: params.q,
-          page: 1,
-        }),
-      );
-    } else {
-      router.push(
-        buildHref(`/instructions/${value}`, {
-          sort: params.sort,
-          q: params.q,
-          page: 1,
-        }),
-      );
-    }
-  };
+  const tabHref = (slug: string | null): string =>
+    slug ? `/instructions/${slug}` : '/instructions';
+
+  const isActive = (slug: string | null): boolean =>
+    slug === null ? !currentCategory : currentCategory === slug;
 
   return (
     <div className={styles.bar}>
-      <div className={styles.group}>
-        <label className={styles.label} htmlFor="instructions-category">
-          {t('filterCategoryLabel')}
-        </label>
-        <select
-          id="instructions-category"
-          className={styles.select}
-          value={currentCategory ?? ''}
-          onChange={(e) => onCategoryChange(e.target.value)}
+      <nav className={styles.tabs} aria-label={t('filterCategoryLabel')}>
+        <Link
+          href={tabHref(null)}
+          className={`${styles.tab} ${isActive(null) ? styles.tabActive : ''}`}
         >
-          <option value="">{t('categoryAll')}</option>
-          {categories.map((c) => (
-            <option key={c.slug} value={c.slug}>
-              {c.label}
-            </option>
-          ))}
-        </select>
-      </div>
+          {t('categoryAllShort')}
+        </Link>
+        {categories.map((c) => (
+          <Link
+            key={c.slug}
+            href={tabHref(c.slug)}
+            className={`${styles.tab} ${isActive(c.slug) ? styles.tabActive : ''}`}
+          >
+            {c.label}
+          </Link>
+        ))}
+      </nav>
 
-      <div className={styles.group}>
-        <label className={styles.label} htmlFor="instructions-sort">
-          {t('sortLabel')}
+      <div className={styles.sort}>
+        <label className={styles.sortLabel} htmlFor="instructions-sort">
+          {t('sortLabel')}:
         </label>
         <select
           id="instructions-sort"

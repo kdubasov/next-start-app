@@ -1,15 +1,20 @@
 /* InstructionCard.module.css */
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 220px;
-  border-radius: 16px;
+  min-height: 320px;
+  border-radius: 20px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  background: linear-gradient(180deg, #2a1f55 0%, #4b3a99 100%);
-  border: 2px solid rgba(148, 127, 255, 0.35);
+  background: linear-gradient(
+    180deg,
+    var(--color-violet-ultra-dark) 0%,
+    var(--color-violet-dark) 100%
+  );
+  border: 2px solid rgba(166, 108, 255, 0.35);
   transition: transform 0.2s ease;
 }
 
@@ -46,7 +51,7 @@
   font-size: 18px;
   line-height: 1.1;
   text-align: center;
-  color: #f5efff;
+  color: var(--color-white);
   margin: 0;
 }
 
@@ -66,4 +71,20 @@
   height: 24px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.bookmark {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
 }
