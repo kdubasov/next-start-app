@@ -20,7 +20,9 @@ const buildUrl = (
     throw new Error('NEXT_PUBLIC_API_BASE_URL is not set — check .env');
   }
 
-  const url = new URL(base + path);
+  const normalizedBase = base.replace(/\/+$/, '');
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const url = new URL(normalizedBase + normalizedPath);
   if (query) {
     for (const [key, value] of Object.entries(query)) {
       if (value === undefined) continue;

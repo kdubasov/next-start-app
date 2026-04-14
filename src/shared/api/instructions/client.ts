@@ -33,9 +33,8 @@ export const getInstructionBySlug = async (
   slug: string,
   locale: TLocale,
 ): Promise<TInstructionDetail | null> => {
-  const decoded = decodeURIComponent(slug);
   return apiFetch<TInstructionDetail>(
-    `/instructions/${encodeURIComponent(decoded)}`,
+    `/instructions/${encodeURIComponent(slug)}`,
     {
       locale,
       revalidate: 300,
