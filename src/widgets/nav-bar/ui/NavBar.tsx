@@ -14,7 +14,7 @@ import {
   LuUsers,
 } from 'react-icons/lu';
 
-import { Link } from '@/i18n/navigation';
+import { ExternalAppLink } from '@/src/shared/ui/external-app-link';
 
 import { Divider } from './components/divider/Divider';
 import { NavBarItem } from './components/nav-bar-item/NavBarItem';
@@ -25,7 +25,7 @@ export function NavBar() {
 
   return (
     <nav className={styles.nav}>
-      <Link href="/guides" className={styles.logoLink}>
+      <ExternalAppLink href="/" className={styles.logoLink}>
         <Image
           src="/brand/academy-logo-full.svg"
           alt="Open Academy"
@@ -34,17 +34,23 @@ export function NavBar() {
           className={styles.logoIcon}
           priority
         />
-      </Link>
+      </ExternalAppLink>
 
       <ul className={styles.list}>
         <li>
-          <NavBarItem href="/home" icon={LuHouse} label={t('Главная')} />
+          <NavBarItem
+            href="/"
+            icon={LuHouse}
+            label={t('Главная')}
+            external
+          />
         </li>
         <li>
           <NavBarItem
             href="/library"
             icon={LuLayoutGrid}
             label={t('Каталог')}
+            external
           />
         </li>
         <li>
@@ -52,6 +58,7 @@ export function NavBar() {
             href="/my-courses"
             icon={LuBookOpen}
             label={t('Мои курсы')}
+            external
           />
         </li>
       </ul>
@@ -60,16 +67,27 @@ export function NavBar() {
 
       <ul className={styles.list}>
         <li>
-          <NavBarItem href="/tasks" icon={LuListChecks} label={t('Задания')} />
+          <NavBarItem
+            href="/tasks"
+            icon={LuListChecks}
+            label={t('Задания')}
+            external
+          />
         </li>
         <li>
-          <NavBarItem href="/my-token" icon={LuCoins} label={t('Мой токен')} />
+          <NavBarItem
+            href="/my-token"
+            icon={LuCoins}
+            label={t('Мой токен')}
+            external
+          />
         </li>
         <li>
           <NavBarItem
             href="/referral-program"
             icon={LuUsers}
             label={t('Реферальная программа')}
+            external
           />
         </li>
       </ul>
@@ -96,6 +114,7 @@ export function NavBar() {
             label={t('Course Studio')}
             disabled
             badge={t('Скоро')}
+            external
           />
         </li>
       </ul>

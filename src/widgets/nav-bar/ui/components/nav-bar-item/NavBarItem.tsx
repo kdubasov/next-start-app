@@ -5,6 +5,7 @@ import type { ComponentType, ReactNode } from 'react';
 import { cn } from '@/shared/lib/cn';
 
 import { Link, usePathname } from '@/i18n/navigation';
+import { ExternalAppLink } from '@/src/shared/ui/external-app-link';
 
 import styles from './NavBarItem.module.css';
 
@@ -14,6 +15,7 @@ type TNavBarItemProps = {
   label: string;
   disabled?: boolean;
   badge?: ReactNode;
+  external?: boolean;
 };
 
 export function NavBarItem({
@@ -22,9 +24,12 @@ export function NavBarItem({
   label,
   disabled,
   badge,
+  external,
 }: TNavBarItemProps) {
   const pathname = usePathname();
-  const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href);
+  const isActive =
+    !external &&
+    (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
   const className = cn(
     styles.item,
@@ -42,6 +47,14 @@ export function NavBarItem({
 
   if (disabled) {
     return <span className={className}>{content}</span>;
+  }
+
+  if (external) {
+    return (
+      <ExternalAppLink href={href} className={className}>
+        {content}
+      </ExternalAppLink>
+    );
   }
 
   return (

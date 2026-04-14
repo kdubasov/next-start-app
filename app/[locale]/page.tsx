@@ -6,5 +6,5 @@ export default async function Root({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  redirect({ href: '/instructions', locale });
+  redirect({ href: '/guides', locale });
 }

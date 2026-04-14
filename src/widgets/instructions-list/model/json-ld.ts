@@ -50,13 +50,13 @@ export const buildListJsonLd = ({
       '@type': 'ListItem',
       position: 1,
       name: breadcrumbHomeLabel,
-      item: absolute(`/${locale}`),
+      item: absolute(`/`),
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: breadcrumbInstructionsLabel,
-      item: absolute(`/${locale}/instructions`),
+      item: absolute(`/${locale}/guides`),
     },
   ];
   if (category) {
@@ -64,7 +64,7 @@ export const buildListJsonLd = ({
       '@type': 'ListItem',
       position: 3,
       name: category.label,
-      item: absolute(`/${locale}/instructions/${category.slug}`),
+      item: absolute(`/${locale}/guides/${category.slug}`),
     });
   }
   if (response.page > 1) {
@@ -88,7 +88,7 @@ export const buildListJsonLd = ({
     itemListElement: response.items.map((item, idx) => ({
       '@type': 'ListItem',
       position: (response.page - 1) * response.pageSize + idx + 1,
-      url: absolute(`/${locale}/instructions/${item.slug}`),
+      url: absolute(`/${locale}/guide/${item.slug}`),
       item: {
         '@type': 'Article',
         headline: item.title,

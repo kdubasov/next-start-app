@@ -56,6 +56,9 @@ export default function LanguageSelect({
 
   const handleChange = (next: string) => {
     if (next === currentLanguage) return;
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('i18nextLng', next);
+    }
     startTransition(() => {
       router.replace(pathname, { locale: next as TLanguage });
     });

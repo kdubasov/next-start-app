@@ -22,7 +22,7 @@ export const buildArticleJsonLd = ({
   const absolute = (path: string): string =>
     path.startsWith('http') ? path : `${baseUrl}${path}`;
 
-  const url = absolute(`/${locale}/instruction/${article.slug}`);
+  const url = absolute(`/${locale}/guide/${article.slug}`);
 
   const articleSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
@@ -50,13 +50,13 @@ export const buildArticleJsonLd = ({
         '@type': 'ListItem',
         position: 1,
         name: breadcrumbHomeLabel,
-        item: absolute(`/${locale}`),
+        item: absolute(`/`),
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: breadcrumbInstructionsLabel,
-        item: absolute(`/${locale}/instructions`),
+        item: absolute(`/${locale}/guides`),
       },
       {
         '@type': 'ListItem',

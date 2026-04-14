@@ -1,11 +1,10 @@
-// app/[locale]/instructions/[category]/page.tsx
+// app/[locale]/guides/page.tsx
 import { notFound } from 'next/navigation';
 
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { redirect } from '@/i18n/navigation';
-import { routing } from '@/i18n/routing';
 import { getInstructions, type TLocale } from '@/src/shared/api/instructions';
 import { InstructionsList } from '@/src/widgets/instructions-list';
 import {
@@ -18,56 +17,32 @@ import {
 const BASE_URL = process.env.NEXT_PUBLIC_PROD_URL ?? '';
 
 type TPageProps = {
-  params: Promise<{ locale: TLocale; category: string }>;
+  params: Promise<{ locale: TLocale }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
-};
-
-export const generateStaticParams = async () => {
-  const result: { locale: string; category: string }[] = [];
-  for (const locale of routing.locales) {
-    try {
-      const { categories } = await getInstructions({
-        locale: locale as TLocale,
-        pageSize: 1,
-      });
-      for (const c of categories) {
-        result.push({ locale, category: c.slug });
-      }
-    } catch (e) {
-      console.error(`[generateStaticParams:category] skipped ${locale}:`, e);
-    }
-  }
-  return result;
 };
 
 export const generateMetadata = async ({
   params,
   searchParams,
 }: TPageProps): Promise<Metadata> => {
-  const { locale, category } = await params;
+  const { locale } = await params;
   const sp = await searchParams;
   const t = await getTranslations({ locale, namespace: 'Instructions' });
 
-  const { categories } = await getInstructions({ locale, pageSize: 1 });
-  const cat = categories.find((c) => c.slug === category);
-  if (!cat) {
-    return { title: t('seoTitle') };
-  }
-
-  const parsed = parseSearchParams(sp, locale, category);
-  const basePath = `/instructions/${category}`;
+  const parsed = parseSearchParams(sp, locale);
+  const basePath = '/guides';
   const canonical = `${BASE_URL}/${locale}${buildCanonical(basePath, parsed)}`;
   const page = parsed.page ?? 1;
 
-  const baseTitle = cat.seo?.title ?? t('seoTitle');
+  const baseTitle = t('seoTitle');
   const title =
     page > 1 ? `${baseTitle} — ${t('pageSuffix', { page })}` : baseTitle;
-  const description = cat.seo?.description ?? t('seoDescription');
+  const description = t('seoDescription');
 
   return {
     title,
     description,
-    keywords: cat.seo?.keywords.join(', '),
+    keywords: t('seoKeywords'),
     alternates: {
       canonical,
       languages: {
@@ -81,16 +56,6 @@ export const generateMetadata = async ({
       url: canonical,
       type: 'website',
       locale,
-      images: cat.seo?.ogImageUrl
-        ? [
-            {
-              url: cat.seo.ogImageUrl,
-              width: 1200,
-              height: 630,
-              alt: title,
-            },
-          ]
-        : undefined,
     },
     twitter: {
       card: 'summary_large_image',
@@ -104,11 +69,11 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function InstructionsCategoryPage({
+export default async function GuidesPage({
   params,
   searchParams,
 }: TPageProps) {
-  const { locale, category } = await params;
+  const { locale } = await params;
   setRequestLocale(locale);
   const sp = await searchParams;
 
@@ -121,22 +86,19 @@ export default async function InstructionsCategoryPage({
     }
     const s = qs.toString();
     redirect({
-      href: `/instructions/${category}${s ? `?${s}` : ''}`,
+      href: `/guides${s ? `?${s}` : ''}`,
       locale,
     });
   }
 
-  const parsed = parseSearchParams(sp, locale, category);
+  const parsed = parseSearchParams(sp, locale);
   const response = await getInstructions(parsed);
-
-  const cat = response.categories.find((c) => c.slug === category);
-  if (!cat) notFound();
 
   if (response.total > 0 && (parsed.page ?? 1) > response.totalPages) {
     notFound();
   }
 
-  const basePath = `/instructions/${category}`;
+  const basePath = '/guides';
   const canonicalPath = `/${locale}${buildCanonical(basePath, parsed)}`;
   const t = await getTranslations({ locale, namespace: 'Instructions' });
 
@@ -144,16 +106,15 @@ export default async function InstructionsCategoryPage({
     <InstructionsList
       response={response}
       categories={response.categories}
-      currentCategory={cat}
+      currentCategory={undefined}
       params={parsed}
       basePath={basePath}
       canonicalPath={canonicalPath}
       locale={locale}
       baseUrl={BASE_URL}
       breadcrumbs={[
-        { label: t('breadcrumbHome'), href: '/' },
-        { label: t('breadcrumbInstructions'), href: '/instructions' },
-        { label: cat.label },
+        { label: t('breadcrumbHome'), href: '/', external: true },
+        { label: t('breadcrumbInstructions') },
       ]}
     />
   );

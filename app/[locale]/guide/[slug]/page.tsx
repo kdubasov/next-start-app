@@ -1,4 +1,4 @@
-// app/[locale]/instruction/[slug]/page.tsx
+// app/[locale]/guide/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 
 import type { Metadata } from 'next';
@@ -43,7 +43,7 @@ export const generateMetadata = async ({
   const article = await getInstructionBySlug(slug, locale);
   if (!article) return {};
 
-  const canonical = `${BASE_URL}/${locale}/instruction/${slug}`;
+  const canonical = `${BASE_URL}/${locale}/guide/${slug}`;
 
   if (!article.seo) {
     return {
@@ -51,8 +51,8 @@ export const generateMetadata = async ({
       alternates: {
         canonical,
         languages: {
-          ru: `${BASE_URL}/ru/instruction/${slug}`,
-          en: `${BASE_URL}/en/instruction/${slug}`,
+          ru: `${BASE_URL}/ru/guide/${slug}`,
+          en: `${BASE_URL}/en/guide/${slug}`,
         },
       },
     };
@@ -65,8 +65,8 @@ export const generateMetadata = async ({
     alternates: {
       canonical,
       languages: {
-        ru: `${BASE_URL}/ru/instruction/${slug}`,
-        en: `${BASE_URL}/en/instruction/${slug}`,
+        ru: `${BASE_URL}/ru/guide/${slug}`,
+        en: `${BASE_URL}/en/guide/${slug}`,
       },
     },
     openGraph: {
@@ -94,7 +94,7 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function InstructionPage({ params }: TPageProps) {
+export default async function GuidePage({ params }: TPageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
@@ -110,10 +110,9 @@ export default async function InstructionPage({ params }: TPageProps) {
       baseUrl={BASE_URL}
       breadcrumbHomeLabel={t('breadcrumbHome')}
       breadcrumbInstructionsLabel={t('breadcrumbInstructions')}
-      backLabel={t('К инструкциям')}
       breadcrumbs={[
-        { label: t('breadcrumbHome'), href: '/' },
-        { label: t('breadcrumbInstructions'), href: '/instructions' },
+        { label: t('breadcrumbHome'), href: '/', external: true },
+        { label: t('breadcrumbInstructions'), href: '/guides' },
         { label: article.title },
       ]}
     />

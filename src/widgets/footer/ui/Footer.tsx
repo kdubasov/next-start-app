@@ -7,8 +7,8 @@ import { FaLinkedinIn, FaTelegramPlane } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { LuMessageCircle } from 'react-icons/lu';
 
-import { Link } from '@/i18n/navigation';
 import { cn } from '@/src/shared/lib/cn';
+import { ExternalAppLink } from '@/src/shared/ui/external-app-link';
 
 import { footerData } from '../model/footer-data';
 import styles from './Footer.module.css';
@@ -20,7 +20,7 @@ export default async function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <Link href="/">
+      <ExternalAppLink href="/">
         <Image
           src="/brand/academy-logo-full.svg"
           alt="Open Academy"
@@ -28,7 +28,7 @@ export default async function Footer() {
           height={40}
           className={styles.logo}
         />
-      </Link>
+      </ExternalAppLink>
 
       <div className={styles.items}>
         {footerData.map((column) => (
@@ -128,8 +128,11 @@ function FooterLink({
   }
 
   return (
-    <Link href={to} className={cn(styles.link, disabled && styles.disabled)}>
+    <ExternalAppLink
+      href={to}
+      className={cn(styles.link, disabled && styles.disabled)}
+    >
       {children}
-    </Link>
+    </ExternalAppLink>
   );
 }

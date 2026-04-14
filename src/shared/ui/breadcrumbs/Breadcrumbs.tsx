@@ -1,10 +1,12 @@
 import { Link } from '@/i18n/navigation';
 
+import { ExternalAppLink } from '../external-app-link';
 import styles from './Breadcrumbs.module.css';
 
 export type TBreadcrumbItem = {
   label: string;
   href?: string;
+  external?: boolean;
 };
 
 type TProps = {
@@ -18,9 +20,15 @@ export const Breadcrumbs = ({ items }: TProps) => {
         {items.map((item, idx) => (
           <li key={idx} className={styles.item}>
             {item.href ? (
-              <Link href={item.href} className={styles.link}>
-                {item.label}
-              </Link>
+              item.external ? (
+                <ExternalAppLink href={item.href} className={styles.link}>
+                  {item.label}
+                </ExternalAppLink>
+              ) : (
+                <Link href={item.href} className={styles.link}>
+                  {item.label}
+                </Link>
+              )
             ) : (
               <span aria-current="page" className={styles.current}>
                 {item.label}

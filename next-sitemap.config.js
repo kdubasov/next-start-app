@@ -69,7 +69,7 @@ module.exports = {
           e,
         );
         paths.push({
-          loc: `/${locale}/instructions`,
+          loc: `/${locale}/guides`,
           changefreq: 'daily',
           priority: 0.8,
         });
@@ -77,13 +77,13 @@ module.exports = {
       }
 
       paths.push({
-        loc: `/${locale}/instructions`,
+        loc: `/${locale}/guides`,
         changefreq: 'daily',
         priority: 0.8,
       });
       for (let p = 2; p <= data.totalPages; p++) {
         paths.push({
-          loc: `/${locale}/instructions?page=${p}`,
+          loc: `/${locale}/guides?page=${p}`,
           changefreq: 'daily',
           priority: 0.5,
         });
@@ -91,14 +91,14 @@ module.exports = {
 
       for (const cat of data.categories) {
         paths.push({
-          loc: `/${locale}/instructions/${encodeURIComponent(cat.slug)}`,
+          loc: `/${locale}/guides/${encodeURIComponent(cat.slug)}`,
           changefreq: 'daily',
           priority: 0.8,
         });
         const totalCatPages = data.categoryPages[cat.slug] ?? 1;
         for (let p = 2; p <= totalCatPages; p++) {
           paths.push({
-            loc: `/${locale}/instructions/${encodeURIComponent(cat.slug)}?page=${p}`,
+            loc: `/${locale}/guides/${encodeURIComponent(cat.slug)}?page=${p}`,
             changefreq: 'daily',
             priority: 0.5,
           });
@@ -107,7 +107,7 @@ module.exports = {
 
       for (const item of data.items) {
         paths.push({
-          loc: `/${locale}/instruction/${encodeURIComponent(item.slug)}`,
+          loc: `/${locale}/guide/${encodeURIComponent(item.slug)}`,
           changefreq: 'weekly',
           priority: 0.7,
           lastmod: item.updatedAt,

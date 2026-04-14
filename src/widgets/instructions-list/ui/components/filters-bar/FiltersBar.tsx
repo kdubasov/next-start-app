@@ -39,7 +39,7 @@ export const FiltersBar = ({ params, categories, currentCategory }: TProps) => {
   };
 
   const tabHref = (slug: string | null): string =>
-    slug ? `/instructions/${slug}` : '/instructions';
+    slug ? `/guides/${slug}` : '/guides';
 
   const isActive = (slug: string | null): boolean =>
     slug === null ? !currentCategory : currentCategory === slug;

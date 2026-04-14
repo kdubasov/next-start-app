@@ -13,6 +13,7 @@ import {
 
 import { Link, usePathname } from '@/i18n/navigation';
 import { cn } from '@/src/shared/lib/cn';
+import { ExternalAppLink } from '@/src/shared/ui/external-app-link';
 
 import s from './BottomNav.module.css';
 
@@ -22,14 +23,25 @@ type TItem = {
   to: string;
   labelKey: 'Главная' | 'Каталог' | 'Мои курсы' | 'Задания' | 'Реферал';
   Icon: TIconType;
+  external?: boolean;
 };
 
 const ITEMS: TItem[] = [
-  { to: '/', labelKey: 'Главная', Icon: LuHouse },
-  { to: '/library', labelKey: 'Каталог', Icon: LuLayoutGrid },
-  { to: '/my-courses', labelKey: 'Мои курсы', Icon: LuBookOpen },
-  { to: '/tasks', labelKey: 'Задания', Icon: LuListChecks },
-  { to: '/referral-program', labelKey: 'Реферал', Icon: LuUsers },
+  { to: '/', labelKey: 'Главная', Icon: LuHouse, external: true },
+  { to: '/library', labelKey: 'Каталог', Icon: LuLayoutGrid, external: true },
+  {
+    to: '/my-courses',
+    labelKey: 'Мои курсы',
+    Icon: LuBookOpen,
+    external: true,
+  },
+  { to: '/tasks', labelKey: 'Задания', Icon: LuListChecks, external: true },
+  {
+    to: '/referral-program',
+    labelKey: 'Реферал',
+    Icon: LuUsers,
+    external: true,
+  },
 ];
 
 export default function BottomNav() {
@@ -38,15 +50,31 @@ export default function BottomNav() {
 
   return (
     <nav className={s.nav}>
-      {ITEMS.map(({ to, labelKey, Icon }) => {
+      {ITEMS.map(({ to, labelKey, Icon, external }) => {
         const isActive =
-          to === '/' ? pathname === '/' : pathname.startsWith(to);
-        return (
-          <Link key={to} href={to} className={cn(s.item, isActive && s.active)}>
+          !external &&
+          (to === '/' ? pathname === '/' : pathname.startsWith(to));
+        const className = cn(s.item, isActive && s.active);
+        const content = (
+          <>
             <span className={s.iconWrap}>
               <Icon />
             </span>
             <span className={s.label}>{t(labelKey)}</span>
+          </>
+        );
+
+        if (external) {
+          return (
+            <ExternalAppLink key={to} href={to} className={className}>
+              {content}
+            </ExternalAppLink>
+          );
+        }
+
+        return (
+          <Link key={to} href={to} className={className}>
+            {content}
           </Link>
         );
       })}
