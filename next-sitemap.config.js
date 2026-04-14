@@ -14,6 +14,7 @@ const fetchListPage = async (locale, page, category) => {
 
   const res = await fetch(url.toString(), {
     headers: { 'Accept-Language': locale, Accept: 'application/json' },
+    signal: AbortSignal.timeout(15_000),
   });
   if (!res.ok) {
     throw new Error(`sitemap: ${url.toString()} → ${res.status}`);
@@ -90,14 +91,14 @@ module.exports = {
 
       for (const cat of data.categories) {
         paths.push({
-          loc: `/${locale}/instructions/${cat.slug}`,
+          loc: `/${locale}/instructions/${encodeURIComponent(cat.slug)}`,
           changefreq: 'daily',
           priority: 0.8,
         });
         const totalCatPages = data.categoryPages[cat.slug] ?? 1;
         for (let p = 2; p <= totalCatPages; p++) {
           paths.push({
-            loc: `/${locale}/instructions/${cat.slug}?page=${p}`,
+            loc: `/${locale}/instructions/${encodeURIComponent(cat.slug)}?page=${p}`,
             changefreq: 'daily',
             priority: 0.5,
           });
@@ -106,7 +107,7 @@ module.exports = {
 
       for (const item of data.items) {
         paths.push({
-          loc: `/${locale}/instruction/${item.slug}`,
+          loc: `/${locale}/instruction/${encodeURIComponent(item.slug)}`,
           changefreq: 'weekly',
           priority: 0.7,
           lastmod: item.updatedAt,
