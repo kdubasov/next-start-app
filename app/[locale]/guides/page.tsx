@@ -69,10 +69,7 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function GuidesPage({
-  params,
-  searchParams,
-}: TPageProps) {
+export default async function GuidesPage({ params, searchParams }: TPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const sp = await searchParams;

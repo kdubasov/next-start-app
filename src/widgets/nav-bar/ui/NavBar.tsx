@@ -30,12 +30,7 @@ export function NavBar() {
 
       <ul className={styles.list}>
         <li>
-          <NavBarItem
-            href="/"
-            icon={LuHouse}
-            label={t('Главная')}
-            external
-          />
+          <NavBarItem href="/" icon={LuHouse} label={t('Главная')} external />
         </li>
         <li>
           <NavBarItem

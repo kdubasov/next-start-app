@@ -28,8 +28,7 @@ export function NavBarItem({
 }: TNavBarItemProps) {
   const pathname = usePathname();
   const isActive =
-    !external &&
-    (href === '/' ? pathname === '/' : pathname.startsWith(href));
+    !external && (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
   const className = cn(
     styles.item,
