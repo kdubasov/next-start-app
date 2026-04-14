@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 import { useTranslations } from 'next-intl';
 import {
   LuBookMarked,
@@ -15,6 +13,7 @@ import {
 } from 'react-icons/lu';
 
 import { ExternalAppLink } from '@/src/shared/ui/external-app-link';
+import { AcademyLogoFull } from '@/src/shared/ui/logo';
 
 import { Divider } from './components/divider/Divider';
 import { NavBarItem } from './components/nav-bar-item/NavBarItem';
@@ -26,14 +25,7 @@ export function NavBar() {
   return (
     <nav className={styles.nav}>
       <ExternalAppLink href="/" className={styles.logoLink}>
-        <Image
-          src="/brand/academy-logo-full.svg"
-          alt="Open Academy"
-          width={175}
-          height={40}
-          className={styles.logoIcon}
-          priority
-        />
+        <AcademyLogoFull className={styles.logoIcon} />
       </ExternalAppLink>
 
       <ul className={styles.list}>

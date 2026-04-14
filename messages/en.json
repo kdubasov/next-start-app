@@ -3,6 +3,10 @@
     "title": "Hello, world!",
     "description": "This is an example page localized via next-intl."
   },
+  "NotFound": {
+    "heading": "The page you are looking for is not found or unavailable",
+    "homeLink": "Back to home"
+  },
   "Header": {
     "darkMode": "Dark theme",
     "lightMode": "Light theme"

@@ -1,7 +1,5 @@
 import type { ReactNode } from 'react';
 
-import Image from 'next/image';
-
 import { getLocale, getTranslations } from 'next-intl/server';
 import { FaLinkedinIn, FaTelegramPlane } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
@@ -9,6 +7,7 @@ import { LuMessageCircle } from 'react-icons/lu';
 
 import { cn } from '@/src/shared/lib/cn';
 import { ExternalAppLink } from '@/src/shared/ui/external-app-link';
+import { AcademyLogoFull } from '@/src/shared/ui/logo';
 
 import { footerData } from '../model/footer-data';
 import styles from './Footer.module.css';
@@ -21,13 +20,7 @@ export default async function Footer() {
   return (
     <footer className={styles.footer}>
       <ExternalAppLink href="/">
-        <Image
-          src="/brand/academy-logo-full.svg"
-          alt="Open Academy"
-          width={196}
-          height={40}
-          className={styles.logo}
-        />
+        <AcademyLogoFull className={styles.logo} />
       </ExternalAppLink>
 
       <div className={styles.items}>

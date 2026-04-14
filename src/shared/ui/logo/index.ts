@@ -1,0 +1,1 @@
+export { AcademyLogoFull } from './AcademyLogoFull';
