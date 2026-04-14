@@ -4,43 +4,55 @@ export type TLocale = 'ru' | 'en';
 
 export type TSortOption = 'newest' | 'popular';
 
-export type TCategorySlug = string;
+export type TInstructionAuthor = {
+  id: number;
+  name: string;
+  avatar: string;
+};
 
 export type TInstructionSeo = {
   title: string;
   description: string;
   keywords: string[];
   ogImageUrl: string;
-  canonical: string;
-};
+} | null;
+
+export type TInstructionBlockType = 'lesson_block' | 'gamified_block';
 
 export type TInstructionListItem = {
-  id: string;
-  slug: string;
+  id: number;
   title: string;
-  category: TCategorySlug;
+  slug: string;
+  category: string;
   gradient: string;
-  card_image: string;
-  border_color: string;
-  author_name: string;
-  author_avatar: string;
-  views_count: number;
-  read_time: number;
-  lesson_id: string | null;
-  course_id: string | null;
+  cardImage: string;
+  borderColor: string;
+  author: TInstructionAuthor;
+  viewsCount: number;
+  timeToRead: string; // ISO 8601 Duration, например "PT5M"
+  courseId: number | null;
+  blockObjectId: number | null;
+  blockType: TInstructionBlockType | null;
   published: boolean;
-  created_at: string;
-  updated_at: string;
+  createdAt: string;
+  updatedAt: string;
   seo: TInstructionSeo;
 };
 
-export type TInstructionPageData = TInstructionListItem & {
+export type TInstructionDetail = TInstructionListItem & {
   content: string;
+};
+
+export type TCategory = {
+  id: number;
+  slug: string;
+  label: string;
+  seo: TInstructionSeo;
 };
 
 export type TInstructionListParams = {
   locale: TLocale;
-  category?: TCategorySlug;
+  category?: string;
   sort?: TSortOption;
   q?: string;
   page?: number;
@@ -48,17 +60,12 @@ export type TInstructionListParams = {
 };
 
 export type TInstructionListResponse = {
-  items: TInstructionListItem[];
-  total: number;
   page: number;
   pageSize: number;
+  total: number;
   totalPages: number;
-};
-
-export type TCategoryWithSeo = {
-  slug: TCategorySlug;
-  label: string;
-  seo: TInstructionSeo;
+  categories: TCategory[];
+  items: TInstructionListItem[];
 };
 
 export const DEFAULT_PAGE_SIZE = 12;
