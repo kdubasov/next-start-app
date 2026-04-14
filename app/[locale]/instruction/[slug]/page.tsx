@@ -75,14 +75,16 @@ export const generateMetadata = async ({
       url: canonical,
       type: 'article',
       locale,
-      images: [
-        {
-          url: article.cardImage,
-          width: 1200,
-          height: 630,
-          alt: article.title,
-        },
-      ],
+      images: article.cardImage
+        ? [
+            {
+              url: article.cardImage,
+              width: 1200,
+              height: 630,
+              alt: article.title,
+            },
+          ]
+        : undefined,
     },
     twitter: {
       card: 'summary_large_image',

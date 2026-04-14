@@ -30,7 +30,7 @@ export const buildArticleJsonLd = ({
     '@id': url,
     headline: article.title,
     description: article.seo?.description,
-    image: absolute(article.cardImage),
+    image: article.cardImage ? absolute(article.cardImage) : undefined,
     url,
     inLanguage: locale,
     datePublished: article.createdAt,

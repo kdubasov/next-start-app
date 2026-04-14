@@ -25,7 +25,7 @@ export type TInstructionListItem = {
   slug: string;
   category: string;
   gradient: string;
-  cardImage: string;
+  cardImage: string | null;
   borderColor: string;
   author: TInstructionAuthor;
   viewsCount: number;

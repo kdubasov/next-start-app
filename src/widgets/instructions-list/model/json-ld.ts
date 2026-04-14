@@ -93,7 +93,7 @@ export const buildListJsonLd = ({
         '@type': 'Article',
         headline: item.title,
         description: item.seo?.description,
-        image: absolute(item.cardImage),
+        image: item.cardImage ? absolute(item.cardImage) : undefined,
         author: {
           '@type': 'Person',
           name: item.author.name,

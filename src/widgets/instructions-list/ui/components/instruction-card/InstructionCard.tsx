@@ -20,16 +20,18 @@ export const InstructionCard = ({ item }: TProps) => {
         borderColor: `${item.borderColor}25`,
       }}
     >
-      <div className={styles.imageWrap}>
-        <Image
-          src={item.cardImage}
-          alt={item.title}
-          width={328}
-          height={181}
-          className={styles.image}
-          loading="lazy"
-        />
-      </div>
+      {item.cardImage && (
+        <div className={styles.imageWrap}>
+          <Image
+            src={item.cardImage}
+            alt={item.title}
+            width={328}
+            height={181}
+            className={styles.image}
+            loading="lazy"
+          />
+        </div>
+      )}
       <div className={styles.body}>
         <h3 className={styles.title}>{item.title}</h3>
         <div className={styles.meta}>
