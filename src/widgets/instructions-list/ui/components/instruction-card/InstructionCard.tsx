@@ -16,8 +16,8 @@ export const InstructionCard = ({ item }: TProps) => {
       href={`/instruction/${item.slug}`}
       className={styles.card}
       style={{
-        background: item.gradient,
-        borderColor: `${item.borderColor}25`,
+        background: item.gradient ?? undefined,
+        borderColor: item.borderColor ? `${item.borderColor}25` : undefined,
       }}
     >
       {item.cardImage && (

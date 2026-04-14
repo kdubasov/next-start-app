@@ -24,9 +24,9 @@ export type TInstructionListItem = {
   title: string;
   slug: string;
   category: string;
-  gradient: string;
+  gradient: string | null;
   cardImage: string | null;
-  borderColor: string;
+  borderColor: string | null;
   author: TInstructionAuthor;
   viewsCount: number;
   timeToRead: string; // ISO 8601 Duration, например "PT5M"

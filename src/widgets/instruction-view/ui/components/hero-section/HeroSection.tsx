@@ -10,10 +10,13 @@ type TProps = {
 
 export const HeroSection = ({ article }: TProps) => {
   return (
-    <div className={styles.hero} style={{ background: article.gradient }}>
+    <div
+      className={styles.hero}
+      style={{ background: article.gradient ?? undefined }}
+    >
       <h1 className={styles.title}>{article.title}</h1>
-      {article.cardImage && (
-        <div className={styles.imageWrap}>
+      <div className={styles.imageWrap}>
+        {article.cardImage && (
           <Image
             src={article.cardImage}
             alt={article.title}
@@ -22,8 +25,8 @@ export const HeroSection = ({ article }: TProps) => {
             className={styles.image}
             priority
           />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

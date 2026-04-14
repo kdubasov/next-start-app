@@ -6,6 +6,7 @@
   border-radius: 16px;
   overflow: hidden;
   padding: 24px;
+  background: linear-gradient(180deg, #2a1f55 0%, #4b3a99 100%);
 }
 
 .title {
