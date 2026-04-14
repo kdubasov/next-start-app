@@ -1,5 +1,5 @@
 import type {
-  TInstructionPageData,
+  TInstructionDetail,
   TLocale,
 } from '@/src/shared/api/instructions';
 import { Breadcrumbs, type TBreadcrumbItem } from '@/src/shared/ui/breadcrumbs';
@@ -12,7 +12,7 @@ import { MetadataBar } from './components/metadata-bar/MetadataBar';
 import styles from './InstructionView.module.css';
 
 type TProps = {
-  article: TInstructionPageData;
+  article: TInstructionDetail;
   locale: TLocale;
   baseUrl: string;
   breadcrumbHomeLabel: string;

@@ -1,11 +1,11 @@
 import Image from 'next/image';
 
-import type { TInstructionPageData } from '@/src/shared/api/instructions';
+import type { TInstructionDetail } from '@/src/shared/api/instructions';
 
 import styles from './HeroSection.module.css';
 
 type TProps = {
-  article: TInstructionPageData;
+  article: TInstructionDetail;
 };
 
 export const HeroSection = ({ article }: TProps) => {
@@ -14,7 +14,7 @@ export const HeroSection = ({ article }: TProps) => {
       <h1 className={styles.title}>{article.title}</h1>
       <div className={styles.imageWrap}>
         <Image
-          src={article.card_image}
+          src={article.cardImage}
           alt={article.title}
           width={200}
           height={200}

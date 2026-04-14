@@ -2,7 +2,7 @@
 import { getTranslations } from 'next-intl/server';
 
 import type {
-  TCategoryWithSeo,
+  TCategory,
   TInstructionListParams,
   TInstructionListResponse,
   TLocale,
@@ -19,8 +19,8 @@ import styles from './InstructionsList.module.css';
 
 type TProps = {
   response: TInstructionListResponse;
-  categories: TCategoryWithSeo[];
-  currentCategory: TCategoryWithSeo | undefined;
+  categories: TCategory[];
+  currentCategory: TCategory | undefined;
   params: TInstructionListParams;
   basePath: string;
   canonicalPath: string;
@@ -41,8 +41,8 @@ export const InstructionsList = async ({
   breadcrumbs,
 }: TProps) => {
   const t = await getTranslations('Instructions');
-  const title = currentCategory?.seo.title ?? t('seoTitle');
-  const description = currentCategory?.seo.description ?? t('seoDescription');
+  const title = currentCategory?.seo?.title ?? t('seoTitle');
+  const description = currentCategory?.seo?.description ?? t('seoDescription');
 
   const jsonLd = buildListJsonLd({
     response,

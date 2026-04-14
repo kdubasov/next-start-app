@@ -17,12 +17,12 @@ export const InstructionCard = ({ item }: TProps) => {
       className={styles.card}
       style={{
         background: item.gradient,
-        borderColor: `${item.border_color}25`,
+        borderColor: `${item.borderColor}25`,
       }}
     >
       <div className={styles.imageWrap}>
         <Image
-          src={item.card_image}
+          src={item.cardImage}
           alt={item.title}
           width={328}
           height={181}
@@ -34,15 +34,15 @@ export const InstructionCard = ({ item }: TProps) => {
         <h3 className={styles.title}>{item.title}</h3>
         <div className={styles.meta}>
           <Image
-            src={item.author_avatar}
-            alt={item.author_name}
+            src={item.author.avatar}
+            alt={item.author.name}
             width={24}
             height={24}
             className={styles.avatar}
           />
-          <span>{item.author_name}</span>
+          <span>{item.author.name}</span>
           <span aria-hidden>·</span>
-          <span>{item.views_count}</span>
+          <span>{item.viewsCount}</span>
         </div>
       </div>
     </Link>

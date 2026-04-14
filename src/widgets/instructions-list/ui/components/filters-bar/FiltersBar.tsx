@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { usePathname, useRouter } from '@/i18n/navigation';
 import type {
-  TCategoryWithSeo,
+  TCategory,
   TInstructionListParams,
   TSortOption,
 } from '@/src/shared/api/instructions/types';
@@ -15,7 +15,7 @@ import styles from './FiltersBar.module.css';
 
 type TProps = {
   params: TInstructionListParams;
-  categories: TCategoryWithSeo[];
+  categories: TCategory[];
   currentCategory: string | undefined;
 };
 

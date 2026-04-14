@@ -1,40 +1,47 @@
 import Image from 'next/image';
 
-import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 
-import type { TInstructionPageData } from '@/src/shared/api/instructions';
+import type {
+  TInstructionDetail,
+  TLocale,
+} from '@/src/shared/api/instructions';
+import { formatDuration } from '@/src/shared/lib/duration';
 
 import styles from './MetadataBar.module.css';
 
 type TProps = {
-  article: TInstructionPageData;
+  article: TInstructionDetail;
 };
 
 export const MetadataBar = ({ article }: TProps) => {
-  const t = useTranslations('Instructions');
+  const locale = useLocale() as TLocale;
 
-  const date = new Date(article.created_at).toLocaleDateString('ru-RU', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
+  const date = new Date(article.createdAt).toLocaleDateString(
+    locale === 'en' ? 'en-US' : 'ru-RU',
+    {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    },
+  );
+
+  const readTimeText = formatDuration(article.timeToRead, locale);
 
   return (
     <div className={styles.bar}>
       <div className={styles.author}>
         <Image
-          src={article.author_avatar}
-          alt={article.author_name}
+          src={article.author.avatar}
+          alt={article.author.name}
           width={28}
           height={28}
           className={styles.avatar}
         />
-        <span className={styles.authorName}>{article.author_name}</span>
+        <span className={styles.authorName}>{article.author.name}</span>
       </div>
-      <span className={styles.stat}>👁 {article.views_count}</span>
-      <span className={styles.stat}>
-        ⏱ {article.read_time} {t('мин')}
-      </span>
+      <span className={styles.stat}>👁 {article.viewsCount}</span>
+      {readTimeText && <span className={styles.stat}>⏱ {readTimeText}</span>}
       <span className={styles.stat}>📅 {date}</span>
     </div>
   );

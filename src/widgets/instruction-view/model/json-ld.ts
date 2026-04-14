@@ -1,11 +1,11 @@
 // src/widgets/instruction-view/model/json-ld.ts
 import type {
-  TInstructionPageData,
+  TInstructionDetail,
   TLocale,
 } from '@/src/shared/api/instructions';
 
 type TBuildArgs = {
-  article: TInstructionPageData;
+  article: TInstructionDetail;
   locale: TLocale;
   baseUrl: string;
   breadcrumbHomeLabel: string;
@@ -29,15 +29,16 @@ export const buildArticleJsonLd = ({
     '@type': 'Article',
     '@id': url,
     headline: article.title,
-    description: article.seo.description,
-    image: absolute(article.card_image),
+    description: article.seo?.description,
+    image: absolute(article.cardImage),
     url,
     inLanguage: locale,
-    datePublished: article.created_at,
-    dateModified: article.updated_at,
+    datePublished: article.createdAt,
+    dateModified: article.updatedAt,
+    timeRequired: article.timeToRead,
     author: {
       '@type': 'Person',
-      name: article.author_name,
+      name: article.author.name,
     },
   };
 

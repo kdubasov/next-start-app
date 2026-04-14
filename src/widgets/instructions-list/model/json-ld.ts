@@ -1,13 +1,13 @@
 // src/widgets/instructions-list/model/json-ld.ts
 import type {
-  TCategoryWithSeo,
+  TCategory,
   TInstructionListResponse,
   TLocale,
 } from '@/src/shared/api/instructions';
 
 type TBuildArgs = {
   response: TInstructionListResponse;
-  category: TCategoryWithSeo | undefined;
+  category: TCategory | undefined;
   locale: TLocale;
   baseUrl: string;
   canonicalPath: string;
@@ -92,14 +92,14 @@ export const buildListJsonLd = ({
       item: {
         '@type': 'Article',
         headline: item.title,
-        description: item.seo.description,
-        image: absolute(item.card_image),
+        description: item.seo?.description,
+        image: absolute(item.cardImage),
         author: {
           '@type': 'Person',
-          name: item.author_name,
+          name: item.author.name,
         },
-        datePublished: item.created_at,
-        dateModified: item.updated_at,
+        datePublished: item.createdAt,
+        dateModified: item.updatedAt,
         inLanguage: locale,
       },
     })),
