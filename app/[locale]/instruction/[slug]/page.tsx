@@ -21,12 +21,16 @@ type TPageProps = {
 export const generateStaticParams = async () => {
   const result: { locale: string; slug: string }[] = [];
   for (const locale of routing.locales) {
-    const { items } = await getInstructions({
-      locale: locale as TLocale,
-      pageSize: 200,
-    });
-    for (const item of items) {
-      result.push({ locale, slug: item.slug });
+    try {
+      const { items } = await getInstructions({
+        locale: locale as TLocale,
+        pageSize: 50,
+      });
+      for (const item of items) {
+        result.push({ locale, slug: item.slug });
+      }
+    } catch (e) {
+      console.error(`[generateStaticParams:slug] skipped ${locale}:`, e);
     }
   }
   return result;
@@ -40,6 +44,19 @@ export const generateMetadata = async ({
   if (!article) return {};
 
   const canonical = `${BASE_URL}/${locale}/instruction/${slug}`;
+
+  if (!article.seo) {
+    return {
+      title: article.title,
+      alternates: {
+        canonical,
+        languages: {
+          ru: `${BASE_URL}/ru/instruction/${slug}`,
+          en: `${BASE_URL}/en/instruction/${slug}`,
+        },
+      },
+    };
+  }
 
   return {
     title: article.seo.title,
@@ -60,9 +77,7 @@ export const generateMetadata = async ({
       locale,
       images: [
         {
-          url: article.card_image.startsWith('http')
-            ? article.card_image
-            : `${BASE_URL}${article.card_image}`,
+          url: article.cardImage,
           width: 1200,
           height: 630,
           alt: article.title,

@@ -5,11 +5,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { redirect } from '@/i18n/navigation';
-import {
-  getCategories,
-  getInstructions,
-  type TLocale,
-} from '@/src/shared/api/instructions';
+import { getInstructions, type TLocale } from '@/src/shared/api/instructions';
 import { InstructionsList } from '@/src/widgets/instructions-list';
 import {
   buildCanonical,
@@ -96,10 +92,7 @@ export default async function InstructionsPage({
   }
 
   const parsed = parseSearchParams(sp, locale);
-  const [response, categories] = await Promise.all([
-    getInstructions(parsed),
-    getCategories({ locale }),
-  ]);
+  const response = await getInstructions(parsed);
 
   if (response.total > 0 && (parsed.page ?? 1) > response.totalPages) {
     notFound();
@@ -112,7 +105,7 @@ export default async function InstructionsPage({
   return (
     <InstructionsList
       response={response}
-      categories={categories}
+      categories={response.categories}
       currentCategory={undefined}
       params={parsed}
       basePath={basePath}
