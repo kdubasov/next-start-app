@@ -2,6 +2,9 @@
 build
 dist
 coverage
+test-results
+playwright-report
+.claude
 
 # PNPM package manager
 pnpm-lock.yaml
@@ -19,3 +22,6 @@ CHANGELOG.md
 tsconfig.json
 src/gql/*
 docs/
+
+# Next
+next-env.d.ts

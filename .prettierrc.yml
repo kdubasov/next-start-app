@@ -1,18 +1,9 @@
+printWidth: 100
+tabWidth: 2
+useTabs: false
 singleQuote: true
-importOrder:
-  [
-    '^react$',
-    '^next/(.*)$',
-    '<THIRD_PARTY_MODULES>',
-    '^@/entities/(.*)$',
-    '^@/features/(.*)$',
-    '^@/widgets/(.*)$',
-    '^@/shared/(.*)$',
-    '^@/(.*)$',
-    '^app/(.*)$',
-    '^[./]',
-  ]
-importOrderSeparation: true
-importOrderSortSpecifiers: true
-importOrderCaseInsensitive: true
-plugins: ['@trivago/prettier-plugin-sort-imports']
+trailingComma: all
+arrowParens: always
+semi: true
+endOfLine: lf
+bracketSpacing: true

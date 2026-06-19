@@ -1,8 +1,4 @@
-import type {
-  BaseQueryFn,
-  FetchArgs,
-  FetchBaseQueryError,
-} from '@reduxjs/toolkit/query';
+import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Mutex } from 'async-mutex';
 import { toast } from 'react-toastify';
@@ -39,24 +35,17 @@ export const baseQueryWithReauth: BaseQueryFn<
           body: JSON.stringify({ refresh_token: refreshToken }),
         });
         const refreshResJSON = await refreshResult.json();
-        if (
-          refreshResJSON &&
-          refreshResJSON.refresh_token &&
-          refreshResJSON.access_token
-        ) {
+        if (refreshResJSON && refreshResJSON.refresh_token && refreshResJSON.access_token) {
           // console.log('%cTOKEN WAS SUCCESS UPDATED!', 'color: green');
           // setLocalAccessToken(refreshResJSON.access_token);
           // setLocalRefreshToken(refreshResJSON.refresh_token);
           result = await baseQuery(args, api, extraOptions);
         } else {
-          toast(
-            'Ошибка обн. пользователя! Пожалуйста, войдите в систему заново!',
-            {
-              toastId: 'err_refresh_token',
-              type: 'error',
-              autoClose: 3000,
-            },
-          );
+          toast('Ошибка обн. пользователя! Пожалуйста, войдите в систему заново!', {
+            toastId: 'err_refresh_token',
+            type: 'error',
+            autoClose: 3000,
+          });
           // removeUser();
           location.reload();
         }

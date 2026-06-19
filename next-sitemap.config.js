@@ -35,6 +35,6 @@ module.exports = {
       },
     ],
     // eslint-disable-next-line no-undef
-    additionalSitemaps: [process.env.NEXT_PUBLIC_PROD_URL + '/sitemap.xml'],
+    additionalSitemaps: [`${process.env.NEXT_PUBLIC_PROD_URL}/sitemap.xml`],
   },
 };

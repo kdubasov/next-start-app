@@ -1,7 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { type TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+
 import generalApi from 'api/apiList/general';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import layout from './slices/layout';
 
@@ -14,8 +15,7 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(generalApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(generalApi.middleware),
 });
 
 setupListeners(store.dispatch);

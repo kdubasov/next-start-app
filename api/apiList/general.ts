@@ -1,4 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
+
 import { baseQueryWithReauth } from 'api/constants';
 
 const generalApi = createApi({
@@ -6,7 +7,7 @@ const generalApi = createApi({
   baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     getParams: builder.query<string[], string>({
-      query: (query) => '/some-link' + query,
+      query: (query) => `/some-link${query}`,
     }),
   }),
 });

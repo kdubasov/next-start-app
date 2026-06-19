@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next-start-app
 
-## Getting Started
+Минимальный стартер на **Next.js 16 (App Router)**: TypeScript, Redux Toolkit + RTK Query,
+react-toastify, с настроенным тулингом (ESLint, Stylelint, Prettier, Playwright, husky).
+Пакетный менеджер — **pnpm**.
 
-First, run the development server:
+## Стек
+
+- **Next.js 16** (App Router) + **React 19**
+- **TypeScript**
+- **Redux Toolkit** + **RTK Query** (с рефрешем токена через `async-mutex`)
+- **react-toastify** — тосты
+- **ESLint** (flat config, FSD import-order) + **Stylelint** + **Prettier**
+- **husky** + **lint-staged** — авто-фикс staged-файлов на коммите
+- **Playwright** — e2e-тесты
+- **next-sitemap** — генерация sitemap/robots на postbuild
+
+## Быстрый старт
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открой [http://localhost:3000](http://localhost:3000). Точка входа — `app/page.tsx`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Команды
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+pnpm dev          # dev-сервер
+pnpm build        # прод-сборка (+ next-sitemap на postbuild)
+pnpm start        # запуск прод-сборки
+pnpm lint         # ESLint (падает на любом warning)
+pnpm lint:css     # Stylelint по **/*.css
+pnpm check-types  # проверка типов (tsc --noEmit)
+pnpm format       # Prettier --write
+pnpm format:check # Prettier --check
+pnpm e2e          # Playwright e2e
+pnpm e2e-report   # открыть последний HTML-отчёт Playwright
+pnpm lighthouse   # Lighthouse CI
+pnpm pp           # полный pre-push: rm .next && tsc && eslint && stylelint && prettier check
+```
 
-## Learn More
+Перед коммитом `pre-commit` хук (husky) прогоняет `lint-staged` (eslint/stylelint/prettier
+`--fix` по staged-файлам). Хук бывает ненадёжен — перед коммитом полезно руками прогнать
+`pnpm check-types`, `pnpm lint` и `pnpm build`.
 
-To learn more about Next.js, take a look at the following resources:
+Запуск одного e2e-файла:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm exec playwright test e2e-tests/example.spec.ts
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Структура
 
-## Deploy on Vercel
+```
+app/                 # App Router: страницы, layout, providers
+src/shared/          # общий код (utils/, hooks/, ui/, types/, constants/ — по мере роста)
+api/                 # RTK Query: base query + слайсы (api/apiList/*), хуки из api/index.ts
+store/               # Redux store + slices
+e2e-tests/           # Playwright
+public/              # статика
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Path-алиас `@/*` → `./src/*` (см. `tsconfig.json`). Подробные конвенции проекта —
+в [CLAUDE.md](./CLAUDE.md).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Окружение
+
+`NEXT_PUBLIC_PROD_URL` (см. `.env`) используется в `next-sitemap.config.js` для генерации
+sitemap/robots. Сгенерированные `robots.txt` / `sitemap*.xml` — в `.gitignore`.

@@ -1,0 +1,9 @@
+# Нормализуем переносы строк в LF при коммите, чтобы shell-скрипты
+# (husky-хуки, *.sh) не ломались на macOS/Linux из-за CRLF, добавленных
+# редакторами на Windows. Без этого pre-commit падает с
+# "Command "lint-staged\r" not found".
+
+* text=auto eol=lf
+
+.husky/* text eol=lf
+*.sh text eol=lf

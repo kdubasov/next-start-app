@@ -6,8 +6,16 @@
 .pnp.js
 .yarn/install-state.gz
 
+# IDE
+.idea/
+
+# AI agents
+.claude
+
 # testing
 /coverage
+/playwright-report/
+/test-results/
 
 # next.js
 /.next/
